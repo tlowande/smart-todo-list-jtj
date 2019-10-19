@@ -15,10 +15,11 @@ const verbs = {
 const categorizeByVerb = function (task ) {
   const key = task.toLowerCase().split(' ')
   if (key.length > 1 && verbs.hasOwnProperty(key[0])) {
-    return verbs.[key[0]]
+    return Number(Object.keys(verbs[key[0]]))
   }
   return false
-
 }
 
-console.log(categorizeByVerb('read harry potter'))
+// console.log(categorizeByVerb('buy'))
+
+module.exports = { categorizeByVerb };
