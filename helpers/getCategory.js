@@ -5,7 +5,7 @@ const foodTags = ['menu', 'yelp', 'foodora', 'restaurant'];
 /**
  * returns regex as an object
  * @param {Array} keywords for each specific category
- * @return {category_id} what the function returns
+ * @return {Regex} Object what the function returns
  */
 function buildRegex(tags) {
   return new RegExp("\\b(" + tags.join('|') + ")\\b", "ig")
@@ -21,6 +21,11 @@ const regexObj = {
   3: foodRegex
 };
 
+/**
+ * Returns category id
+ * @param {string} final results from api results to compare against specific keywords
+ * @return {category_id} what the function returns
+ */
 const getCategory = function(string) {
   let arr = [];
   result = null;

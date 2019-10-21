@@ -1,7 +1,6 @@
 const { getSearchResults } = require('./getSearchResults');
 const { combineResults } = require('./combineResults');
 const { getCategory } = require('./getCategory');
-// const regObj = require('./regex');
 
 const queryString = 'mean bao';
 getSearchResults(queryString)
