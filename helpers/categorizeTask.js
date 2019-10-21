@@ -3,12 +3,11 @@ const { addTask } = require('./categorizationFunctions');
 const { getSearchResults } = require('./categorizationFunctions');
 const { combineResults } = require('./categorizationFunctions');
 const { getCategory } = require('./categorizationFunctions');
-// const x = require('./x');
 
 userInput = 'community';
 user = 2;
 
-const sortCategory = (task) => {
+const categorizeTask = (task) => {
   const firstScreen = categorizeByVerb(task)
   if (firstScreen) {
     console.log('before API', firstScreen);
@@ -34,4 +33,4 @@ const sortCategory = (task) => {
   }
 }
 
-sortCategory(userInput);
+categorizeTask(userInput);
