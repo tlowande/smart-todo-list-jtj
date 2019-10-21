@@ -58,7 +58,7 @@ const categorizeByVerb = function (task) {
  * @param {String} what the user inputs
  * @return {[Objects]} what the function returns
  */
-const getSearchResults = async (queryString) => {
+const getSearchResults = (queryString) => {
   return new Promise(async (resolve, reject) => {
     let result = await serpwow.json({
       q: queryString,
@@ -140,7 +140,7 @@ const categorizeTask = (task) => {
   }
 }
 
-userInput = 'latin world';
+userInput = 'osmows';
 user = 2;
 categorizeTask(userInput);
 
