@@ -9,20 +9,21 @@ const SerpWow = require('google-search-results-serpwow');
 const serpwow = new SerpWow('02726F437EFB47BAABF8368C718AFD64');
 
 const getSearchResults = async (queryString) => {
-  let result = await serpwow.json({
-    q: queryString,
-    gl: 'ca',
-    hl: 'en',
-    location: 'Toronto,Ontario,Canada',
-    google_domain: 'google.ca'
+  return new Promise(async (resolve, reject) => {
+    let result = await serpwow.json({
+      q: queryString,
+      gl: 'ca',
+      hl: 'en',
+      location: 'Toronto,Ontario,Canada',
+      google_domain: 'google.ca'
+    });
+    try {
+      // pretty-print the result
+      // console.log(result.organic_results);
+      resolve(result.organic_results);
+    } catch(err) {
+      reject(err.message);
+    }
   });
-
-  try {
-    // pretty-print the result
-    console.log(result.organic_results);
-    return result.organic_results;
-  } catch(err) {
-    console.error('query error', err.stack);
-  }
 }
 module.exports = { getSearchResults };

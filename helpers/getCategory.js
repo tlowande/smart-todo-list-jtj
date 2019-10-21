@@ -15,13 +15,13 @@ const movieRegex = buildRegex(movieTags);
 const bookRegex = buildRegex(bookTags);
 const foodRegex = buildRegex(foodTags);
 
-const regObj = {
+const regexObj = {
   1: movieRegex,
   2: bookRegex,
   3: foodRegex
 };
 
-const getCategory = function(regexObj, string) {
+const getCategory = function(string) {
   let arr = [];
   result = null;
 
@@ -37,4 +37,4 @@ const getCategory = function(regexObj, string) {
   return result;
 }
 
-console.log(getCategory(regObj, str));
+module.exports = { getCategory };
