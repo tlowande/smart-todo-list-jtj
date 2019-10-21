@@ -19,4 +19,5 @@ const addTask = async function (task, user_id, category_id) {
   }
 }
 
-// addTask('watch harry potter', 1, 1)
+module.exports = { addTask };
+
