@@ -15,7 +15,7 @@ const addTask = async function (task, user_id, category_id) {
   }
 }
 
-addTask('buy this', 2, 2).then((res) => console.log(res));
+// addTask('buy this', 2, 2).then((res) => console.log(res));
 
 module.exports = { addTask };
 
