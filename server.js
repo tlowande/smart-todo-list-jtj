@@ -9,13 +9,11 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const cookieSession = require('cookie-session');
 
 // PG database client/connection setup
 const { db } = require('./db/index');
 db.connect();
-
-// Import helper functions
-const { getUserByEmail } = require('./helpers/database');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -32,7 +30,6 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-const cookieSession = require('cookie-session');
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
@@ -42,15 +39,15 @@ app.use(cookieSession({
 // Note: Feel free to replace the example routes below with your own
 const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
-
+const tasksRoutes = require('./routes/tasks');
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use('/login', loginRoutes(db));
+app.use('/login', loginRoutes());
 app.use('/logout', logoutRoutes());
-
+app.use('/tasks', tasksRoutes());
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above

@@ -68,6 +68,7 @@ const getSearchResults = (queryString) => {
       google_domain: 'google.ca'
     });
     try {
+      console.log(result.organic_results)
       resolve(result.organic_results);
     } catch(err) {
       reject(err.message);
@@ -140,7 +141,7 @@ const categorizeTask = (task) => {
   }
 }
 
-userInput = 'osmows';
+userInput = 'deadpool';
 user = 2;
 categorizeTask(userInput);
 
