@@ -1,21 +1,14 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const cookieSession = require('cookie-session');
 const { getUserByEmail } = require('../helpers/database');
-
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}));
 
 module.exports = () => {
   // load login/register page
   router.get('/', (req, res) => {
     // check if user is logged in
     if (req.session.user_id) {
-      res.redirect('../views/tasks-test');
+      res.redirect('/tasks');
 
     } else {
       res.render('../views/login-test');
@@ -24,7 +17,10 @@ module.exports = () => {
   });
 
   // logging in
-  router.post('/', (req, res) => {
+  router.post('/', async (req, res) => {
+    // const user = await getUserByEmail(req.body.email);
+    // console.log(user);
+
     // query the database for the email input by user
     getUserByEmail(req.body.email)
       .then(user => {
@@ -37,14 +33,18 @@ module.exports = () => {
             res.json({error: 'Password does not match'});
 
           } else {
+            console.log('LOGIN SUCCESS');
             req.session = { user_id: user.id };
-            res.redirect('../views/tasks-test');
+            console.log(req.session);
+            res.redirect('/tasks');
 
           }
         }
       });
 
   });
+
+  // login after register
 
 return router;
 }

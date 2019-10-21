@@ -32,9 +32,16 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const loginRoutes = require('./routes/login');
+const logoutRoutes = require('./routes/logout');
 
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
@@ -42,6 +49,7 @@ const widgetsRoutes = require("./routes/widgets");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use('/login', loginRoutes(db));
+app.use('/logout', logoutRoutes());
 
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
