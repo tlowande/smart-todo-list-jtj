@@ -13,7 +13,14 @@ app.use(cookieSession({
 module.exports = () => {
   // load login/register page
   router.get('/', (req, res) => {
-    res.render('../views/login-test');
+    // check if user is logged in
+    if (req.session.user_id) {
+      res.redirect('../views/tasks-test');
+
+    } else {
+      res.render('../views/login-test');
+
+    }
   });
 
   // logging in
