@@ -23,8 +23,8 @@ const regexObj = {
 
 /**
  * Returns category id
- * @param {string} final results from api results to compare against specific keywords
- * @return {category_id} what the function returns
+ * @param {String} final results from api results to compare against specific keywords
+ * @return {Number} category_id
  */
 const getCategory = function(string) {
   let arr = [];

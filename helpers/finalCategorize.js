@@ -1,11 +1,11 @@
-const { categorizeByVerb } = require('./categorizeByVerb');
-const { addTask } = require('./addTask');
-const { getSearchResults } = require('./getSearchResults');
-const { combineResults } = require('./combineResults');
-const { getCategory } = require('./getCategory');
+const { categorizeByVerb } = require('./categorizationFunctions');
+const { addTask } = require('./categorizationFunctions');
+const { getSearchResults } = require('./categorizationFunctions');
+const { combineResults } = require('./categorizationFunctions');
+const { getCategory } = require('./categorizationFunctions');
 // const x = require('./x');
 
-userInput = 'night table';
+userInput = 'community';
 user = 2;
 
 const sortCategory = (task) => {
