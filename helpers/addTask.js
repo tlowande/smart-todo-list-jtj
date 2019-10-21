@@ -1,8 +1,4 @@
-const { Pool } = require('pg');
-const dbParams = require('../lib/db.js');
-const db = new Pool(dbParams);
-db.connect();
-
+// load .env data into process.env
 const addTask = async function (task, user_id, category_id) {
   const queryString = `
   INSERT INTO tasks (input, user_id, category_id)
@@ -18,6 +14,8 @@ const addTask = async function (task, user_id, category_id) {
     console.error('query error', err.stack)
   }
 }
+
+addTask('buy this', 2, 2).then((res) => console.log(res));
 
 module.exports = { addTask };
 
