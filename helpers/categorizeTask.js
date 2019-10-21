@@ -1,5 +1,4 @@
 const { categorizeByVerb } = require('./categorizationFunctions');
-const { addTask } = require('./categorizationFunctions');
 const { getSearchResults } = require('./categorizationFunctions');
 const { combineResults } = require('./categorizationFunctions');
 const { getCategory } = require('./categorizationFunctions');

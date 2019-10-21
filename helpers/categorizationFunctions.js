@@ -1,3 +1,4 @@
+const { addTask } = require('./addTask');
 const SerpWow = require('google-search-results-serpwow');
 // create the serpwow object
 const serpwow = new SerpWow('02726F437EFB47BAABF8368C718AFD64');
@@ -108,9 +109,38 @@ const getCategory = function(string) {
   return result;
 }
 
-module.exports = {
-  categorizeByVerb,
-  getSearchResults,
-  combineResults,
-  getCategory
-};
+/**
+ * Calls addTask function and inserts task into database
+ * @param {String} task from user input
+ * @return nothing yet..??? maybe something later
+ */
+const categorizeTask = (task) => {
+  const firstScreen = categorizeByVerb(task)
+  if (firstScreen) {
+    console.log('before API', firstScreen);
+    // addTask(task, user_id, firstScreen);
+    return
+    //calls function that renders new task already categorized in user's main page
+  } else {
+    getSearchResults(userInput)
+    .then(res => {
+      return combineResults(res);
+    })
+    .then(res => {
+      return getCategory(res);
+    })
+    .then(res => {
+      console.log('After API:', res);
+      // addTask(task, user, res);
+      //calls function that renders new task already categorized in user's main page
+    })
+    .catch(err => {
+      console.error('query error', err.stack);
+    });
+  }
+}
+
+userInput = 'latin world';
+user = 2;
+categorizeTask(userInput);
+
