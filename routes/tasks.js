@@ -13,7 +13,7 @@ module.exports = () => {
       user: user,
       task: task
     }
-    res.render('../views/tasks-test', templateVars);
+    res.render('../views/tasks', templateVars);
   })
 
   router.post('/', async (req, res) => {
@@ -24,7 +24,11 @@ module.exports = () => {
     }
     //check duplicate task and verify  why postman is not returning anything
     const newTask = await categorizeTask(input);
-     return newTask;
+    // res.redirect('/');
+    res.send(
+      'okay'
+    );
+    return newTask;
   })
   return router;
 }
