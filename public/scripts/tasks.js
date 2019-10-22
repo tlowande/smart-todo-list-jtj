@@ -10,8 +10,7 @@ $(() => {
       event.preventDefault();
     }
     input.classList.toggle('active');
-    input.focus();
-
+fdfd
   })
 
   submit.addEventListener('focus', function() {

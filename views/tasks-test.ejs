@@ -5,18 +5,21 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="/styles/login.css" type="text/css" /> -->
     <link rel="stylesheet" href="/styles/tasks.css" type="text/css" />
+    <!--Font Families-->
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma|Permanent+Marker&display=swap" rel="stylesheet">
+    <!-- External Font Awesome icons -->
+    <script src="https://kit.fontawesome.com/7b217e7c39.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   </head>
 
   <body>
-    <!-- <% include ./partials/nav-bar %> -->
-    <h1>Tasks</h1>
+    <% include ./partials/nav-bar %>
 
     <div class='task-form'>
       <form method='POST' action='/tasks'>
-      <!-- <form> -->
         <input type='text' name='task'>
         <button class='add-task'></button>
       </form>
