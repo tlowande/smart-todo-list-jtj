@@ -1,6 +1,12 @@
-$( document ).ready(() => {
-  $('.btn-login').on('click', () => {
-    console.log('this');
-    $('#login').slideToggle('slow');
-  })
+$( document ).ready(function () {
+  $('.btn-login').click(function() {
+    $('#register').slideUp();
+    $('#login').toggle('slow');
+  });
+
+  $('.btn-register').click(function() {
+    $('#login').slideUp();
+    $('#register').toggle('slow');
+  });
+
 });
