@@ -35,12 +35,81 @@ body {
   }
 
   .container {
-    width:500px;
-    margin: 30vh auto 20vh auto;
-    background-color: goldenrod;
-    color: honeydew;
-    display: none;
+    margin: 20vh auto 15vh auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
+    .img-container{
+      background-color: rgb(241, 193, 70);
+      border-radius: 35px;
+      width: 65%;
+      height: 250px;
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      align-items: center;
+
+      .img {
+        background-color: rgb(241, 193, 70);
+        width: 300px;
+        height:300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-top: -35%;
+
+        img {
+          height: 200px;
+          width: 150px;
+          transform: rotate(-30deg)
+        }
+      }
+      .buttons {
+        background-color: rgb(241, 193, 70);
+        width: 95%;
+        height: 60px;
+        display: flex;
+        justify-content: space-evenly;
+        font-family: 'Baloo Tamma', cursive;
+        font-size: 2.5rem;
+        margin-top: -5%;
+
+        .btn-login {
+          border-radius: 8px;
+          border: solid 2px;
+          padding: 7px;
+        }
+        .btn-login:hover {
+          background-color: rgb(255, 211, 98);
+          color: honeydew;
+        }
+        .btn-login:active {
+          box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                      inset 2px 2px 3px rgba(0, 0, 0, .6);
+        }
+        .btn-register {
+          border-radius: 8px;
+          border: solid 2px;
+          padding: 7px;
+        }
+        .btn-register:hover {
+          background-color: rgb(255, 211, 98);
+          color: honeydew;
+        }
+        .btn-register:active {
+          box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                      inset 2px 2px 3px rgba(0, 0, 0, .6);
+        }
+      }
+    }
+
+    #register {
+      width:500px;
+      display: none;
+    }
   }
 
   h1 {
