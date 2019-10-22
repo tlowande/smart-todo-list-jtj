@@ -1,4 +1,4 @@
-const { addTask } = require('./addTask');
+const { addTask } = require('./database');
 const SerpWow = require('google-search-results-serpwow');
 // create the serpwow object
 const serpwow = new SerpWow('02726F437EFB47BAABF8368C718AFD64');
@@ -44,12 +44,11 @@ const categorizeByVerb = function (task) {
     order: { 2: 'restaurants' },
     buy: { 4: 'products' }
   };
-
-  const key = task.toLowerCase().split(' ')
+  const key = task.toLowerCase().split(' ');
   if (key.length > 1 && verbs.hasOwnProperty(key[0])) {
     return Number(Object.keys(verbs[key[0]]));
   }
-  return false
+  return false;
 }
 
 /**
@@ -68,9 +67,8 @@ const getSearchResults = (queryString) => {
       google_domain: 'google.ca'
     });
     try {
-      console.log(result.organic_results)
       resolve(result.organic_results);
-    } catch(err) {
+    } catch (err) {
       reject(err.message);
     }
   });
@@ -94,14 +92,14 @@ const combineResults = (arr) => {
  * @param {String} final results from api results to compare against specific keywords
  * @return {Number} category_id
  */
-const getCategory = function(string) {
+const getCategory = function (string) {
   let arr = [];
   result = null;
 
   for (const regex in regexObj) {
     if (string.match(regexObj[regex]) && string.match(regexObj[regex]).length > arr.length) {
-     arr = string.match(regexObj[regex]);
-     result = Number(regex);
+      arr = string.match(regexObj[regex]);
+      result = Number(regex);
     }
   }
   if (!result) {
@@ -115,33 +113,41 @@ const getCategory = function(string) {
  * @param {String} task from user input
  * @return nothing yet..??? maybe something later
  */
-const categorizeTask = (task) => {
-  const firstScreen = categorizeByVerb(task)
-  if (firstScreen) {
-    console.log('before API', firstScreen);
-    // addTask(task, user_id, firstScreen);
-    return
+const categorizeTask =  async (obj) => {
+  const { task, user_id } = obj;
+  const res = categorizeByVerb(task);
+  const input = {
+    task: task,
+    user_id: user_id,
+    category_id: res
+  }
+  if (res) {
+    await addTask(input);
+    return;
     //calls function that renders new task already categorized in user's main page
   } else {
-    getSearchResults(userInput)
-    .then(res => {
-      return combineResults(res);
-    })
-    .then(res => {
-      return getCategory(res);
-    })
-    .then(res => {
-      console.log('After API:', res);
-      // addTask(task, user, res);
-      //calls function that renders new task already categorized in user's main page
-    })
-    .catch(err => {
-      console.error('query error', err.stack);
-    });
+    getSearchResults(task)
+      .then(res => {
+        return combineResults(res);
+      })
+      .then(res => {
+        return getCategory(res);
+      })
+      .then(res => {
+        console.log('After API:', res);
+        input.category_id = res;
+        addTask(input);
+        //calls function that renders new task already categorized in user's main page
+      })
+      .catch(err => {
+        console.error('query error', err.stack);
+      });
   }
 }
 
-userInput = 'deadpool';
-user = 2;
-categorizeTask(userInput);
+module.exports = { categorizeTask };
+
+// userInput = 'deadpool';
+// user = 2;
+// categorizeTask(userInput);
 
