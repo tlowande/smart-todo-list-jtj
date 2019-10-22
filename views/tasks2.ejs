@@ -9,7 +9,7 @@
   <!--Css style-->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <!-- <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" /> -->
-  <link rel="stylesheet" href="/styles/login.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/login.css" type="text/css" /> -->
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/tasks2.css" type="text/css" />
 
@@ -32,55 +32,64 @@
 <body>
   <% include ./partials/nav-bar %>
 
-  <div id='mylists'>
-    <article id="movies">
-      <header>
-        <div><i class="fas fa-video"></i></div>
-        <div>Movies</div>
-      </header>
-      <div>
-        <ul>
-          <li></li>
-        </ul>
-      </div>
-    </article>
-    <article id="books">
-      <header>
-        <div><i class="fas fa-book-open"></i></div>
-        <div>Books</div>
-      </header>
-      <div>
-        <ul>
-          <li></li>
-        </ul>
-      </div>
+  <div class="task-container">
+    <div class='task-form'>
+      <form method='POST' action='/tasks'>
+        <input type='text' name='task' placeholder='add task'>
+        <button class='add-task'></button>
+      </form>
+    </div>
 
-    </article>
-    <article id="restaurants">
-      <header>
-        <div><i class="fas fa-utensils"></i></div>
-        <div>Restaurants</div>
-      </header>
-      <div>
-        <ul>
-          <li></li>
-        </ul>
-      </div>
-
-    </article>
-    <article id="products">
-      <header>
+    <div id='my-lists'>
+      <article id="movies">
+        <header>
+          <div><i class="fas fa-video"></i></div>
+          <div>Movies</div>
+        </header>
         <div>
-          <<i class="fas fa-shopping-cart"></i>/div>
-            <div>Products</div>
-      </header>
-      <div>
-        <ul>
-          <li></li>
-        </ul>
-      </div>
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+      </article>
+      <article id="books">
+        <header>
+          <div><i class="fas fa-book-open"></i></div>
+          <div>Books</div>
+        </header>
+        <div>
+          <ul>
+            <li></li>
+          </ul>
+        </div>
 
-    </article>
+      </article>
+      <article id="restaurants">
+        <header>
+          <div><i class="fas fa-utensils"></i></div>
+          <div>Restaurants</div>
+        </header>
+        <div>
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+
+      </article>
+      <article id="products">
+        <header>
+          <div>
+            <div><i class="fas fa-shopping-cart"></i></div>
+            <div>Products</div>
+        </header>
+        <div>
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+
+      </article>
+    </div>
   </div>
 </body>
 
