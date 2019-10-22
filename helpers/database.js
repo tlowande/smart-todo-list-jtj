@@ -2,6 +2,22 @@
 const { db } = require('../db/index');
 const bcrypt = require('bcrypt');
 
+const addTask = async function (obj) {
+  const { task, user_id, category_id } = obj;
+  const queryString = `
+  INSERT INTO tasks (input, user_id, category_id)
+  VALUES ($1, $2, $3)
+  RETURNING *;
+  `;
+  const values = [task, user_id, category_id];
+  try {
+    const res = await db.query(queryString, values)
+    return res.rows[0]
+  } catch (err) {
+    console.error('query error', err.stack)
+  }
+}
+
 const getUserByEmail = async (email) => {
   const queryString = `
     SELECT *
@@ -66,7 +82,6 @@ const addUser = async (obj) => {
 
   try {
     const res = await db.query(queryString, queryParams);
-    console.log(res.rows[0])
     return res.rows[0];
 
   } catch (err) {
@@ -75,6 +90,7 @@ const addUser = async (obj) => {
 }
 
 module.exports = {
+  addTask,
   getUserByEmail,
   getUserById,
   getTaskById,
