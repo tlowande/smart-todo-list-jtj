@@ -1,3 +1,4 @@
+// https://codepen.io/shehab-eltawel/pen/MyxxMB?editors=0010
 $(() => {
 
   const input = document.querySelector('.task-form');
@@ -9,6 +10,8 @@ $(() => {
       event.preventDefault();
     }
     input.classList.toggle('active');
+    input.focus();
+
   })
 
   submit.addEventListener('focus', function() {
@@ -20,3 +23,4 @@ $(() => {
   })
 
 });
+
