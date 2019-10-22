@@ -1,5 +1,6 @@
 // helper functions where the database is involved
 const { db } = require('../db/index');
+const bcrypt = require('bcrypt');
 
 const getUserByEmail = async (email) => {
   const queryString = `
@@ -13,7 +14,7 @@ const getUserByEmail = async (email) => {
     const res = await db.query(queryString, queryParams);
     return res.rows[0] || null;
 
-  } catch(err) {
+  } catch (err) {
     console.error('query error', err.stack);
   }
 
@@ -31,7 +32,7 @@ const getUserById = async (id) => {
     const res = await db.query(queryString, queryParams);
     return res.rows[0];
 
-  } catch(err) {
+  } catch (err) {
     console.error('query error', err.stack);
   }
 }
@@ -48,7 +49,27 @@ const getTaskById = async (id) => {
     const res = await db.query(queryString, queryParams);
     return res.rows;
 
-  } catch(err) {
+  } catch (err) {
+    console.error('query error', err.stack);
+  }
+}
+
+const addUser = async (obj) => {
+  const { name, email, password } = obj;
+
+  const queryString = `
+  INSERT INTO users (name, email, password)
+  VALUES ($1, $2, $3)
+  RETURNING *;
+`;
+  const queryParams = [name, email, bcrypt.hashSync(password, 10)];
+
+  try {
+    const res = await db.query(queryString, queryParams);
+    console.log(res.rows[0])
+    return res.rows[0];
+
+  } catch (err) {
     console.error('query error', err.stack);
   }
 }
@@ -56,5 +77,6 @@ const getTaskById = async (id) => {
 module.exports = {
   getUserByEmail,
   getUserById,
-  getTaskById
- };
+  getTaskById,
+  addUser
+};
