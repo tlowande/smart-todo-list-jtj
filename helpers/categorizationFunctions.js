@@ -144,4 +144,3 @@ const categorizeTask = (task) => {
 userInput = 'deadpool';
 user = 2;
 categorizeTask(userInput);
-
