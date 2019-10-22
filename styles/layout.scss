@@ -35,7 +35,7 @@ body {
   }
 
   .container {
-    margin: 20vh auto 15vh auto;
+    margin: 20vh auto 2.5vh auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -106,10 +106,16 @@ body {
       }
     }
 
-    #register {
-      width:500px;
-      display: none;
-    }
+  }
+
+  #register {
+    width: 500px;
+    margin: 0 25%;
+    // display: none;
+  }
+  #login {
+    width: 500px;
+    margin: 0 25%;
   }
 
   h1 {
