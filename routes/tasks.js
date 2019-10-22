@@ -24,7 +24,11 @@ module.exports = () => {
     }
     //check duplicate task and verify  why postman is not returning anything
     const newTask = await categorizeTask(input);
-     return newTask;
+    // res.redirect('/');
+    res.send(
+      'okay'
+    );
+    return newTask;
   })
   return router;
 }

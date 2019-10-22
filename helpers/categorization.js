@@ -126,7 +126,7 @@ const categorizeTask =  async (obj) => {
     return;
     //calls function that renders new task already categorized in user's main page
   } else {
-    getSearchResults(task)
+    return getSearchResults(task)
       .then(res => {
         return combineResults(res);
       })
