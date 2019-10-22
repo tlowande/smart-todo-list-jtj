@@ -18,9 +18,7 @@ module.exports = () => {
 
   // logging in
   router.post('/', async (req, res) => {
-    // const user = await getUserByEmail(req.body.email);
-    // console.log(user);
-
+    console.log('Hitting the login', req.body);
     // query the database for the email input by user
     getUserByEmail(req.body.email)
       .then(user => {
@@ -40,6 +38,9 @@ module.exports = () => {
 
           }
         }
+      })
+      .catch(err => {
+        console.error('login error', err);
       });
 
   });
