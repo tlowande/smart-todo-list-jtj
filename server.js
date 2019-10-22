@@ -41,6 +41,7 @@ const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
 const tasksRoutes = require('./routes/tasks');
 const registerRoutes = require('./routes/register');
+const updateRoutes = require('./routes/update');
 // const usersRoutes = require("./routes/users");
 // const widgetsRoutes = require("./routes/widgets");
 
@@ -50,6 +51,7 @@ app.use('/login', loginRoutes());
 app.use('/logout', logoutRoutes());
 app.use('/tasks', tasksRoutes());
 app.use('/register', registerRoutes());
+app.use('/update', updateRoutes(db));
 // app.use("/api/users", usersRoutes(db));
 // app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
