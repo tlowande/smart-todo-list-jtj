@@ -11,6 +11,7 @@ $(() => {
     if (submit.value.length === 0) {
       event.preventDefault();
     }
+    submit.focus();
     task.classList.toggle('active');
 
   });
