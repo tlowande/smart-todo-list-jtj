@@ -15,3 +15,5 @@ INSERT INTO tasks (user_id, input, category_id) VALUES (2, 'table lamp', 4);
 INSERT INTO tasks (user_id, input, category_id) VALUES (2, 'shampoo', 4);
 INSERT INTO tasks (user_id, input, category_id) VALUES (2, 'soccer ball', 4);
 INSERT INTO tasks (user_id, input, category_id) VALUES (2, 'coffee', 4);
+INSERT INTO tasks (user_id, input, category_id) VALUES (1, 'soccer ball', 4);
+INSERT INTO tasks (user_id, input, category_id) VALUES (1, 'coffee', 4);
