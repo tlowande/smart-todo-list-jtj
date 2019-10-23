@@ -1,19 +1,16 @@
 * {
   outline: none;
   border: none;
-  padding: 0;
+  // padding: 0;
 }
-
 body {
   background-color: #eeeeee;
 }
-
 .task-form {
   position: relative;
   margin: 50px auto 0;
   width: 325px;
 }
-
 .task-form:before {
   content: ' ';
   position: absolute;
@@ -26,13 +23,11 @@ body {
   background: #9046f1;
   transition: all 0.5s cubic-bezier(.87, -.41, .19, 1.44);
 }
-
 .active:before {
   transform: scale(1);
   transition-delay: 0.3s;
   animation: 0.6s cubic-bezier(.87, -.41, .19, 1.44) 0.5s infinite forwards focus;
 }
-
 input {
   border-radius: 36px;
   position: absolute;
@@ -40,24 +35,21 @@ input {
   height: 64px;
   transition: all 0.5s cubic-bezier(.87, -.41, .19, 1.44);
 }
-
 .active input {
   width: 100%;
   padding-left: 25px;
   border-radius: 36px;
 }
-
-button {
+.add-task {
   background: white;
-  position: absolute;
+  position: relative;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 100%;
   width: 64px;
   height: 64px;
   transition: all 0.5s cubic-bezier(.87, -.41, .19, 1.44);
 }
-
-button:after {
+.add-task:after {
   content: ' ';
   position: absolute;
   width: 32px;
@@ -69,8 +61,7 @@ button:after {
   background: #f1c146;
   border-radius: 50%;
 }
-
-button:before {
+.add-task:before {
   content: ' ';
   position: absolute;
   width: 24px;
@@ -86,20 +77,16 @@ button:before {
   z-index: 1;
   transition: all 0.8s ease;
 }
-
-.active button {
+.active .add-task {
   transform: translateX(260px);
 }
-
-.active button:before {
+.active .add-task:before {
   transform: scale(1);
 }
-
 .focus:before {
   transform: scale(0);
   animation: none;
 }
-
 @keyframes focus {
   0% {
     opacity: 0;
