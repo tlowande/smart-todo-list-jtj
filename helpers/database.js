@@ -55,7 +55,7 @@ const getUserById = async (id) => {
 
 const getTaskById = async (id) => {
   const queryString = `
-    SELECT input, category_id
+    SELECT user_id, input, category_id
     FROM tasks
     WHERE user_id = $1
   `;
@@ -64,7 +64,6 @@ const getTaskById = async (id) => {
   try {
     const res = await db.query(queryString, queryParams);
     return res.rows;
-
   } catch (err) {
     console.error('query error', err.stack);
   }

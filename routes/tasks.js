@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getTaskById, getUserById } = require('../helpers/database');
 const { categorizeTask } = require('../helpers/categorization');
+const { loadTasks } = require('../public/scripts/loadTasks');
 
 module.exports = () => {
   // load tasks page
@@ -23,18 +24,15 @@ module.exports = () => {
     }
     //check duplicate task
     const newTask = await categorizeTask(input);
-    res.send(
-      'okay'
-    );
-    return newTask;
+    console.log('newTask', newTask);
+    loadTasks(true);
+
   })
 
   // get tasks from database in json format
   router.get('/api', async (req, res) => {
     const tasks = await getTaskById(req.session.user_id);
-    // console.log('get tasks/api',tasks);
     res.json(tasks);
-
   })
 
   return router;

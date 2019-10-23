@@ -1,9 +1,4 @@
-// https://codepen.io/shehab-eltawel/pen/MyxxMB?editors=0010
 $(() => {
-
-  // const taskForm = document.querySelector('.task-form');
-  // const submit = document.querySelector('input');
-  // const button = document.querySelector('.add-task');
 
   const taskForm = $('.task-form');
   const submit = $('input');
