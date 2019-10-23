@@ -16,10 +16,8 @@ module.exports = (db) => {
       WHERE user_id = $2 AND input = $3
       RETURNING *;
     `;
-    console.log(queryParams);
     try {
       const res = await db.query(queryString, queryParams);
-      console.log(res.rows[0]);
       return res.rows[0];
     } catch (err) {
       console.error('query error', err.stack);

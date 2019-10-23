@@ -25,7 +25,7 @@ module.exports = () => {
     }
     //check duplicate task
     const newTask = await categorizeTask(input);
-    console.log('newTask', newTask);
+    // console.log('newTask', newTask);
     res.json(newTask);
     // loadTasks(true);
 

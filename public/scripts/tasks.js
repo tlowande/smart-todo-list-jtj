@@ -1,27 +1,46 @@
 $(() => {
 
+  $('.list-group').on('drop', function (event) {
+    const task = $(event.target).text();
+    const category = $(event.target)
+      .parent()
+      .parent()
+      .attr('data-category_id');
+
+    $.ajax('/update', {
+      method: 'POST',
+      data: {
+        input: task,
+        category_id: category
+      }
+    })
+    // .then()
+
+  })
+
+
   const taskForm = $('.task-form');
   const submit = $('input');
   const button = $('.add-task');
 
   taskForm.submit((event) => {
     event.preventDefault();
-    console.log('Sending...', $('#submit-task').serialize());
+    // console.log('Sending...', $('#submit-task').serialize());
 
     $.ajax('/tasks', {
       method: 'POST',
       contentType: 'application/x-www-form-urlencoded',
       data: $('#submit-task').serialize()
-     })
+    })
       .then((res) => {
-        console.log('Getting back...', res);
+        // console.log('Getting back...', res);
         loadTasks(true);
       })
 
   })
 
   // listen for button click
-  button.on('click', function(event) {
+  button.on('click', function (event) {
     // if the input area is empty, prevent user from sending post request
     if (submit.val.length === 0) {
       event.preventDefault();
@@ -31,11 +50,11 @@ $(() => {
 
   });
   // listen for submit coming into focus
-  submit.on('focus', function() {
+  submit.on('focus', function () {
     taskForm.addClass('focus');
   });
   // listen blur event (loses focus)
-  submit.on('blur', function() {
+  submit.on('blur', function () {
     submit.val.length !== 0
       ? taskForm.addClass('focus')
       : taskForm.removeClass('focus');
@@ -73,7 +92,7 @@ $(() => {
 
     // wrap each task in html and add to corresponding array
     for (task of tasks) {
-      console.log('task', task);
+      // console.log('task', task);
       // check which category container to append the task to
       switch (task.category_id) {
         case 1:
@@ -95,7 +114,7 @@ $(() => {
     $taskContainer_restaurants.prepend(renderedTasks_restaurants.join(''));
     $taskContainer_products.prepend(renderedTasks_products.join(''));
 
-    console.log('$taskContainer_movies', $taskContainer_movies[0]);
+    // console.log('$taskContainer_movies', $taskContainer_movies[0]);
   };
 
   // genereate markup for a single task
