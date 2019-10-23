@@ -1,8 +1,19 @@
 $( document ).ready(function () {
-  const $userIcon = $('.dropdown');
+  const $userIcon = $('#user-icon');
+  const $logout = $('#logout');
 
-  $userIcon.data('id')
-  .css('display','flex');
+  $logout.on('click', e => {
+    e.target.parentNode.submit();
+  })
+
+  if ($userIcon.data('id')) {
+    $userIcon.css('display','flex');
+    console.log('this is id', id);
+  } else {
+    $userIcon.css('display','none');
+  }
+
+  $(target).click()
 
 });
 

@@ -14,13 +14,15 @@
       </div>
     </div>
   </div>
-  <div class="dropdown" data-id=" <%= user_id %> ">
+  <div class="dropdown" id="user-icon" data-id="<%= user.id %>">
     <div>
       <i class="fas fa-user-astronaut"></i>
     </div>
-    <div class="username-holder"></div>
+    <div class="username-holder"><%= user.name %></div>
     <div class="dropdown-content">
-      <div id="logout">Logout</div>
+        <form action="/logout" method="POST">
+          <div id="logout">Logout</div>
+        </form>
     </div>
   </div>
 </nav>

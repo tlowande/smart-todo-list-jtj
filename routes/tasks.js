@@ -10,7 +10,6 @@ module.exports = () => {
     const task = await getTaskById(req.session.user_id);
     //returns an array of objects
     let templateVars = {
-      user_id: user,
       user: user,
       task: task
     }
