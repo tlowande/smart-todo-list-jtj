@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Smart TO-DO List</title>
 
@@ -36,7 +35,8 @@
 <body class="body">
 
   <div class='task-form'>
-    <form method='POST' action='/tasks'>
+    <!-- <form method='POST' action='/tasks'> -->
+    <form id='submit-task'>
       <input type='text' name='task' placeholder='add task'>
       <button class='add-task'></button>
     </form>
@@ -85,9 +85,12 @@
       </article>
     </div>
   </div>
-
+  
+  <!-- App.js -->
   <script type="text/javascript" src="/scripts/nav.js"></script>
   <script type="text/javascript" src="/scripts/tasks.js"></script>
+  <script type="text/javascript" src="/scripts/dragNdrop.js"></script>
+
 </body>
 
 </html>
