@@ -1,7 +1,19 @@
 // Client Side jQuery logic
 // const { $ } = require("../vendor/jquery-3.0.0");
+// const { getTasksById } = require('../../helpers/database');
+
 
 // get tasks from database
+// const loadTasks = (onlyLoadlatest = false) => {
+//   $.ajax('/tasks/api', { method: 'GET' })
+//     .then((data) => {
+
+//       if (onlyLoadLatest) {
+//         renderTasks()
+//       }
+
+//     }
+// }
 
 // render multiple tasks
 // tasks = [ {task, category_id} ]
@@ -23,6 +35,8 @@ const renderTasks = (tasks) => {
     switch (task.category_id) {
       case 1:
         renderedTasks_movies.shift(createTaskElement(task.task).outerHTML);
+        console.log(createTaskElement(task.task));
+        console.log(renderedTasks_movies);
         break;
       case 2:
         renderedTasks_books.shift(createTaskElement(task.task).outerHTML);
@@ -42,8 +56,9 @@ const renderTasks = (tasks) => {
 }
 
 // genereate markup for a single task
-// task = task
+// task = task (string)
 const createTaskElement = (task) => {
+  // do not want to append <ul> to every list
   const $taskCard = $('<ul>').addClass('task');
   const markup = `
     <li>${task}</li>
@@ -54,9 +69,9 @@ const createTaskElement = (task) => {
 
 
 //  TEST
-const data = {
+const data = [{
   task: 'Harry Potter',
   category_id: 1
-}
-const test = createTaskElement(data);
+}]
+const test = renderTasks(data);
 console.log(test);

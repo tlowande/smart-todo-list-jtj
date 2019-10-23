@@ -32,7 +32,8 @@
 <body class="body">
 
   <div class='task-form'>
-    <form method='POST' action='/tasks'>
+    <!-- <form method='POST' action='/tasks'> -->
+    <form id='submit-task'>
       <input type='text' name='task' placeholder='add task'>
       <button class='add-task'></button>
     </form>
@@ -90,6 +91,8 @@
   </div>
 
   <script type="text/javascript" src="/scripts/tasks.js"></script>
+  <script type="text/javascript" src="/scripts/loadTasks.js"></script>
+
 </body>
 
 </html>

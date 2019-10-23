@@ -17,11 +17,14 @@ module.exports = () => {
   })
 
   router.post('/', async (req, res) => {
+    console.log('body', req.body);
+
     const input = {
       task: req.body.task,
       user_id: req.session.user_id
 
     }
+    console.log('input', input);
     //check duplicate task and verify  why postman is not returning anything
     const newTask = await categorizeTask(input);
     // res.redirect('/');
