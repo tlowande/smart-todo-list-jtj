@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getTaskById, getUserById } = require('../helpers/database');
 const { categorizeTask } = require('../helpers/categorization');
-const { loadTasks } = require('../public/scripts/loadTasks');
+// const { loadTasks } = require('../public/scripts/loadTasks');
 
 module.exports = () => {
   // load tasks page
@@ -25,7 +25,8 @@ module.exports = () => {
     //check duplicate task
     const newTask = await categorizeTask(input);
     console.log('newTask', newTask);
-    loadTasks(true);
+    res.json(newTask);
+    // loadTasks(true);
 
   })
 
