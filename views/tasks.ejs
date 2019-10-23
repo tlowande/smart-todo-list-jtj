@@ -20,12 +20,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+  <script src="https://cdn.jsdelivr.net/gh/RubaXa/Sortable/Sortable.min.js"></script>
+
   <!--Font Families-->
   <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma|Permanent+Marker&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
   <!-- External Font Awesome icons -->
   <script src="https://kit.fontawesome.com/7b217e7c39.js" crossorigin="anonymous"></script>
+
 
 </head>
 <% include ./partials/nav-bar %>
@@ -45,22 +48,23 @@
           <div><i class="fas fa-video"></i></div>
           <div>Movies</div>
         </header>
-        <div>
-          <ul>
-            <li>Watch Moana</li>
-          </ul>
-        </div>
+        <ul class="list-group" id="demo1">
+          <li class="list-group-item"> 1984 </li>
+          <li class="list-group-item"> titanic </li>
+          <li class="list-group-item"> frozen </li>
+          <li class="list-group-item"> lost </li>
+          <li class="list-group-item"> friends </li>
+          <li class="list-group-item"> harry potter </li>
+        </ul>
       </article>
       <article id="books">
         <header>
           <div><i class="fas fa-book-open"></i></div>
           <div>Books</div>
         </header>
-        <div>
-          <ul>
-            <li></li>
-          </ul>
-        </div>
+        <ul class="list-group" id="demo2">
+          <li class="list-group-item">eat, pray love</li>
+        </ul>
 
       </article>
       <article id="restaurants">
@@ -68,24 +72,16 @@
           <div><i class="fas fa-utensils"></i></div>
           <div>Restaurants</div>
         </header>
-        <div>
-          <ul>
-            <li></li>
-          </ul>
-        </div>
-
+        <ul class="list-group" id="demo3">
+        </ul>
       </article>
       <article id="products">
         <header>
-            <div><i class="fas fa-shopping-cart"></i></div>
-            <div>Products</div>
+          <div><i class="fas fa-shopping-cart"></i></div>
+          <div>Products</div>
         </header>
-        <div>
-          <ul>
-            <li></li>
-          </ul>
-        </div>
-
+        <ul class="list-group" id="demo4">
+        </ul>
       </article>
     </div>
   </div>

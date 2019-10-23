@@ -43,13 +43,22 @@
         margin: 15px 0 9px 0;
       }
 
-      ul {
-        margin: 10px 12px 10px 0;
+      .list-group {
+        // margin: 10px 15px 10px 0;
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
         overflow-wrap: break-word;
-        li {
-          margin: 5px 0;
+        // li {
+        //   margin: 5px 0;
+        // }
+
+        .list-group-item {
+          background-color: #d4d4d4d5;
+          text-align: center;
+          border: none;
+        }
+        .list-group-item:hover {
+          background-color:#f6e5bc;
         }
       }
 
