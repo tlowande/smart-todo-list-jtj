@@ -2,11 +2,16 @@ const express = require('express');
 const router = express.Router();
 const { getTaskById, getUserById } = require('../helpers/database');
 const { categorizeTask } = require('../helpers/categorization');
-// const { loadTasks } = require('../public/scripts/loadTasks');
 
 module.exports = () => {
   // load tasks page
   router.get('/', async (req, res) => {
+
+    // TEMPORARY - check if user is logged in
+    if (!req.session.user_id) {
+      res.redirect('/login');
+    }
+
     const user = await getUserById(req.session.user_id);
     const task = await getTaskById(req.session.user_id);
     //returns an array of objects
@@ -14,7 +19,6 @@ module.exports = () => {
       user: user,
       task: task
     }
-    console.log(user);
     res.render('../views/tasks', templateVars);
   })
 
@@ -23,12 +27,10 @@ module.exports = () => {
       task: req.body.task,
       user_id: req.session.user_id
     }
-    //check duplicate task
     const newTask = await categorizeTask(input);
-    console.log('newTask', newTask);
     res.json(newTask);
-    // loadTasks(true);
 
+    //STRETCH check duplicate task
   })
 
   // get tasks from database in json format
