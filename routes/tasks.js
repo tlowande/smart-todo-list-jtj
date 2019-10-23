@@ -13,7 +13,7 @@ module.exports = () => {
       user: user,
       task: task
     }
-    res.render('../views/tasks2', templateVars);
+    res.render('../views/tasks', templateVars);
   })
 
   router.post('/', async (req, res) => {
