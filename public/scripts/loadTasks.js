@@ -24,28 +24,26 @@ const renderTasks = (tasks) => {
   const renderedTasks_restaurants = [];
   const renderedTasks_products = [];
   // initialize taskContainers
-  const $taskContainer_movies = $('#movies');
-  const $taskContainer_books = $('#books');
-  const $taskContainer_restaurants = $('#restaurants');
-  const $taskContainer_products = $('#products');
+  const $taskContainer_movies = $('#movies ul');
+  const $taskContainer_books = $('#books ul');
+  const $taskContainer_restaurants = $('#restaurants ul');
+  const $taskContainer_products = $('#products ul');
 
   // wrap each task in html and add to corresponding array
   for (task of tasks) {
     // check which category container to append the task to
     switch (task.category_id) {
       case 1:
-        renderedTasks_movies.shift(createTaskElement(task.task).outerHTML);
-        console.log(createTaskElement(task.task));
-        console.log(renderedTasks_movies);
+        renderedTasks_movies.unshift(createTaskElement(task.task));
         break;
       case 2:
-        renderedTasks_books.shift(createTaskElement(task.task).outerHTML);
+        renderedTasks_books.unshift(createTaskElement(task.task));
         break;
       case 3:
-        renderedTasks_restaurants.shift(createTaskElement(task.task).outerHTML);
+        renderedTasks_restaurants.unshift(createTaskElement(task.task));
         break;
       default:
-        renderedTasks_products.shift(createTaskElement(task.task).outerHTML);
+        renderedTasks_products.unshift(createTaskElement(task.task));
     }
   }
 
@@ -53,25 +51,24 @@ const renderTasks = (tasks) => {
   $taskContainer_books.prepend(renderedTasks_books.join(''));
   $taskContainer_restaurants.prepend(renderedTasks_restaurants.join(''));
   $taskContainer_products.prepend(renderedTasks_products.join(''));
+
+  console.log('$taskContainer_movies', $taskContainer_movies[0]);
 }
 
 // genereate markup for a single task
 // task = task (string)
 const createTaskElement = (task) => {
-  // do not want to append <ul> to every list
-  const $taskCard = $('<ul>').addClass('task');
   const markup = `
     <li>${task}</li>
   `;
-  return $taskCard.append(markup);
+  return markup;
 }
-
-
 
 //  TEST
 const data = [{
   task: 'Harry Potter',
   category_id: 1
-}]
+}];
+
 const test = renderTasks(data);
 console.log(test);
