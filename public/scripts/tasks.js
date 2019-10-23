@@ -28,18 +28,25 @@ $(() => {
 
 });
 
+Sortable.create(demo1, {
+  animation: 100,
+  group: 'list-1',
+  draggable: '.list-group-item',
+  handle: '.list-group-item',
+  sort: true,
+  filter: '.sortable-disabled',
+  // chosenClass: 'active'
+});
 
-
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-}
+Sortable.create(demo2, {
+  group: 'list-1',
+  handle: '.list-group-item'
+});
+Sortable.create(demo3, {
+  group: 'list-1',
+  handle: '.list-group-item'
+});
+Sortable.create(demo4, {
+  group: 'list-1',
+  handle: '.list-group-item'
+});
