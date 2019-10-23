@@ -18,17 +18,21 @@
 
     article {
       width: 20%;
-      border: solid 3px black;
+      // border: solid 3px black;
       border-radius: 7px;
+      height: 600px;
+      overflow: scroll;
 
       header {
         display: flex;
         flex-direction: row;
         justify-content: center;
         padding: 10px;
-        font-family: 'Permanent Marker', cursive;
+        // font-family: 'Permanent Marker', cursive;
+        font-family: 'Baloo Tamma', cursive;
         font-size: 1.5rem;
         border-bottom: solid 1px gray;
+        position: relative;
 
         div {
           padding: 0 10px;
@@ -36,8 +40,31 @@
       }
 
       div {
-        margin: 10px 0;
+        margin: 15px 0;
       }
+
+      ul {
+        margin: 10px 15px 10px 0;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        overflow-wrap: break-word;
+        li {
+          margin: 5px 0;
+        }
+      }
+
+    }
+    #movies {
+      background-color: #d4d4d4d5;
+    }
+    #books {
+      background-color: #d4d4d4d5;
+    }
+    #restaurants {
+      background-color: #d4d4d4d5;
+    }
+    #products {
+      background-color: #d4d4d4d5;
     }
   }
 }
