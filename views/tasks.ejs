@@ -40,49 +40,53 @@
   </div>
   <div class="task-container">
     <div id='my-lists'>
-      <article id="movies">
+      <article id="movies" ondrop="drop(event)" ondragover="allowDrop(event)">
         <header>
           <div><i class="fas fa-video"></i></div>
           <div>Movies</div>
         </header>
         <div>
           <ul>
-            <li></li>
+            <li draggable="true" ondragstart="drag(event)" id="drag1"> 1984 </li>
+            <li draggable="true" ondragstart="drag(event)" id="drag2"> titanic </li>
+            <li draggable="true" ondragstart="drag(event)" id="drag3"> frozen </li>
+            <li draggable="true" ondragstart="drag(event)" id="drag4"> lost </li>
+            <li draggable="true" ondragstart="drag(event)" id="drag5"> friends </li>
+            <li draggable="true" ondragstart="drag(event)" id="drag6"> harry potter </li>
           </ul>
         </div>
       </article>
-      <article id="books">
+      <article id="books" ondrop="drop(event)" ondragover="allowDrop(event)">
         <header>
           <div><i class="fas fa-book-open"></i></div>
           <div>Books</div>
         </header>
         <div>
           <ul>
-            <li></li>
+            <li draggable="true" ondragstart="drag(event)" id="drag7">eat, pray love</li>
           </ul>
         </div>
 
       </article>
-      <article id="restaurants">
-        <header>
+      <article id="restaurants" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <header drop-disable>
           <div><i class="fas fa-utensils"></i></div>
           <div>Restaurants</div>
         </header>
         <div>
           <ul>
-            <li></li>
           </ul>
         </div>
 
       </article>
-      <article id="products">
+      <article id="products" ondrop="drop(event)" ondragover="allowDrop(event)">
         <header>
             <div><i class="fas fa-shopping-cart"></i></div>
             <div>Products</div>
         </header>
         <div>
           <ul>
-            <li></li>
+            <li ></li>
           </ul>
         </div>
 
