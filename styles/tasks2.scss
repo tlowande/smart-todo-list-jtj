@@ -1,0 +1,70 @@
+
+.body {
+  background-color: #eeeeee;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  #my-lists {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 50px auto;
+    width: 100%;
+    height: 100%;
+
+    article {
+      width: 20%;
+      // border: solid 3px black;
+      border-radius: 7px;
+      height: 600px;
+      overflow: scroll;
+
+      header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px;
+        // font-family: 'Permanent Marker', cursive;
+        font-family: 'Baloo Tamma', cursive;
+        font-size: 1.5rem;
+        border-bottom: solid 1px gray;
+        position: relative;
+
+        div {
+          padding: 0 10px;
+        }
+      }
+
+      div {
+        margin: 15px 0;
+      }
+
+      ul {
+        margin: 10px 15px 10px 0;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        overflow-wrap: break-word;
+        li {
+          margin: 5px 0;
+        }
+      }
+
+    }
+    #movies {
+      background-color: #d4d4d4d5;
+    }
+    #books {
+      background-color: #d4d4d4d5;
+    }
+    #restaurants {
+      background-color: #d4d4d4d5;
+    }
+    #products {
+      background-color: #d4d4d4d5;
+    }
+  }
+}
