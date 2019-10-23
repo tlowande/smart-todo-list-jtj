@@ -33,10 +33,12 @@ $(() => {
     $submitForm.toggleClass('active');
 
   });
+
   // cursor focus switches to input box (i.e. open input box)
   $input.on('focus', function() {
     $submitForm.addClass('focus');
   });
+
   // listen blur event (loses focus)
   $input.on('blur', function() {
     $input.val().length !== 0
@@ -49,7 +51,6 @@ $(() => {
   const loadTasks = (onlyLoadLatest = false) => {
     $.ajax('/tasks/api', { method: 'GET' })
       .then((data) => {
-        // console.log('DATA', data);
 
         if (onlyLoadLatest) {
           renderTasks([data[data.length - 1]]);

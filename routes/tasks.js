@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { getTaskById, getUserById } = require('../helpers/database');
 const { categorizeTask } = require('../helpers/categorization');
-// const { loadTasks } = require('../public/scripts/loadTasks');
 
 module.exports = () => {
   // load tasks page
@@ -22,9 +21,10 @@ module.exports = () => {
       task: req.body.task,
       user_id: req.session.user_id
     }
-    //STRETCH check duplicate task
     const newTask = await categorizeTask(input);
     res.json(newTask);
+
+    //STRETCH check duplicate task
   })
 
   // get tasks from database in json format
