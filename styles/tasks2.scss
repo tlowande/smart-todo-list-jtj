@@ -15,6 +15,25 @@
     article {
       width: 20%;
       border: solid 3px black;
+      border-radius: 7px;
+
+      header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 1.5rem;
+        border-bottom: solid 1px gray;
+
+        div {
+          padding: 0 10px;
+        }
+      }
+
+      div {
+        margin: 10px 0;
+      }
     }
   }
 }
