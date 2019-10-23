@@ -1,52 +1,110 @@
-// https://codepen.io/shehab-eltawel/pen/MyxxMB?editors=0010
 $(() => {
 
-  const task = document.querySelector('.task-form');
-  const submit = document.querySelector('input');
-  const button = document.querySelector('button');
+  const taskForm = $('.task-form');
+  const submit = $('input');
+  const button = $('.add-task');
+
+  taskForm.submit((event) => {
+    event.preventDefault();
+    console.log('Sending...', $('#submit-task').serialize());
+
+    $.ajax('/tasks', {
+      method: 'POST',
+      contentType: 'application/x-www-form-urlencoded',
+      data: $('#submit-task').serialize()
+     })
+      .then((res) => {
+        console.log('Getting back...', res);
+        loadTasks(true);
+      })
+
+  })
 
   // listen for button click
-  button.addEventListener('click', function(event) {
+  button.on('click', function(event) {
     // if the input area is empty, prevent user from sending post request
-    if (submit.value.length === 0) {
+    if (submit.val.length === 0) {
       event.preventDefault();
     }
     submit.focus();
-    task.classList.toggle('active');
+    taskForm.toggleClass('active');
 
   });
   // listen for submit coming into focus
-  submit.addEventListener('focus', function() {
-    task.classList.add('focus');
+  submit.on('focus', function() {
+    taskForm.addClass('focus');
   });
   // listen blur event (loses focus)
-  submit.addEventListener('blur', function() {
-    submit.value.length !== 0
-      ? task.classList.add('focus')
-      : task.classList.remove('focus');
+  submit.on('blur', function() {
+    submit.val.length !== 0
+      ? taskForm.addClass('focus')
+      : taskForm.removeClass('focus');
   });
 
-});
+  /* loadTasks function */
+  // get tasks from database
+  const loadTasks = (onlyLoadLatest = false) => {
+    $.ajax('/tasks/api', { method: 'GET' })
+      .then((data) => {
+        // console.log('DATA', data);
 
-Sortable.create(demo1, {
-  animation: 100,
-  group: 'list-1',
-  draggable: '.list-group-item',
-  handle: '.list-group-item',
-  sort: true,
-  filter: '.sortable-disabled',
-  // chosenClass: 'active'
-});
+        if (onlyLoadLatest) {
+          renderTasks([data[data.length - 1]]);
+        } else {
+          renderTasks(data);
+        }
+      });
+  };
+  loadTasks();
 
-Sortable.create(demo2, {
-  group: 'list-1',
-  handle: '.list-group-item'
-});
-Sortable.create(demo3, {
-  group: 'list-1',
-  handle: '.list-group-item'
-});
-Sortable.create(demo4, {
-  group: 'list-1',
-  handle: '.list-group-item'
+  // render multiple tasks
+  // tasks = [ {task, category_id} ]
+  const renderTasks = (tasks) => {
+    // initialize empty array to store rendered tasks
+    const renderedTasks_movies = [];
+    const renderedTasks_books = [];
+    const renderedTasks_restaurants = [];
+    const renderedTasks_products = [];
+    // initialize taskContainers
+    const $taskContainer_movies = $('#movies ul');
+    const $taskContainer_books = $('#books ul');
+    const $taskContainer_restaurants = $('#restaurants ul');
+    const $taskContainer_products = $('#products ul');
+
+    // wrap each task in html and add to corresponding array
+    for (task of tasks) {
+      console.log('task', task);
+      // check which category container to append the task to
+      switch (task.category_id) {
+        case 1:
+          renderedTasks_movies.unshift(createTaskElement(task.input));
+          break;
+        case 2:
+          renderedTasks_books.unshift(createTaskElement(task.input));
+          break;
+        case 3:
+          renderedTasks_restaurants.unshift(createTaskElement(task.input));
+          break;
+        default:
+          renderedTasks_products.unshift(createTaskElement(task.input));
+      }
+    }
+
+    $taskContainer_movies.prepend(renderedTasks_movies.join(''));
+    $taskContainer_books.prepend(renderedTasks_books.join(''));
+    $taskContainer_restaurants.prepend(renderedTasks_restaurants.join(''));
+    $taskContainer_products.prepend(renderedTasks_products.join(''));
+
+    console.log('$taskContainer_movies', $taskContainer_movies[0]);
+  };
+
+  // genereate markup for a single task
+  // task = task (string)
+  const createTaskElement = (task) => {
+    const markup = `
+      <li class='list-group-item'>${task}</li>
+    `;
+    return markup;
+  };
+
 });

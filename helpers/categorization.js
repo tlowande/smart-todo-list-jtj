@@ -122,8 +122,8 @@ const categorizeTask =  async (obj) => {
     category_id: res
   }
   if (res) {
-    await addTask(input);
-    return;
+    const newTask = await addTask(input);
+    return newTask;
     //calls function that renders new task already categorized in user's main page
   } else {
     return getSearchResults(task)
@@ -136,8 +136,8 @@ const categorizeTask =  async (obj) => {
       .then(res => {
         console.log('After API:', res);
         input.category_id = res;
-        addTask(input);
-        //calls function that renders new task already categorized in user's main page
+        const newTask = addTask(input);
+        return newTask;
       })
       .catch(err => {
         console.error('query error', err.stack);

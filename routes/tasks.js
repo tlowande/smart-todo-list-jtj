@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getTaskById, getUserById } = require('../helpers/database');
 const { categorizeTask } = require('../helpers/categorization');
+// const { loadTasks } = require('../public/scripts/loadTasks');
 
 module.exports = () => {
   // load tasks page
@@ -20,15 +21,20 @@ module.exports = () => {
     const input = {
       task: req.body.task,
       user_id: req.session.user_id
-
     }
-    //check duplicate task and verify  why postman is not returning anything
+    //check duplicate task
     const newTask = await categorizeTask(input);
-    // res.redirect('/');
-    res.send(
-      'okay'
-    );
-    return newTask;
+    console.log('newTask', newTask);
+    res.json(newTask);
+    // loadTasks(true);
+
   })
+
+  // get tasks from database in json format
+  router.get('/api', async (req, res) => {
+    const tasks = await getTaskById(req.session.user_id);
+    res.json(tasks);
+  })
+
   return router;
 }
