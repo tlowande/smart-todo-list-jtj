@@ -4,16 +4,16 @@
 
 
 // get tasks from database
-const loadTasks = (onlyLoadlatest = false) => {
-  $.ajax('/tasks/api', { method: 'GET' })
-    .then((data) => {
+// const loadTasks = (onlyLoadlatest = false) => {
+//   $.ajax('/tasks/api', { method: 'GET' })
+//     .then((data) => {
 
-      if (onlyLoadLatest) {
-        renderTasks()
-      }
+//       if (onlyLoadLatest) {
+//         renderTasks()
+//       }
 
-    }
-}
+//     }
+// }
 
 // render multiple tasks
 // tasks = [ {task, category_id} ]

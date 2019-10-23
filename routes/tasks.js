@@ -17,21 +17,25 @@ module.exports = () => {
   })
 
   router.post('/', async (req, res) => {
-    console.log('body', req.body);
-
     const input = {
       task: req.body.task,
       user_id: req.session.user_id
-
     }
-    console.log('input', input);
-    //check duplicate task and verify  why postman is not returning anything
+    //check duplicate task
     const newTask = await categorizeTask(input);
-    // res.redirect('/');
     res.send(
       'okay'
     );
     return newTask;
   })
+
+  // get tasks from database in json format
+  router.get('/api', async (req, res) => {
+    const tasks = await getTaskById(req.session.user_id);
+    // console.log('get tasks/api',tasks);
+    res.json(tasks);
+
+  })
+
   return router;
 }

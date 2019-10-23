@@ -12,9 +12,9 @@ const addTask = async function (obj) {
   const values = [task, user_id, category_id];
   try {
     const res = await db.query(queryString, values)
-    return res.rows[0]
+    return res.rows[0];
   } catch (err) {
-    console.error('query error', err.stack)
+    console.error('query error', err.stack);
   }
 }
 
