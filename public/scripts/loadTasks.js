@@ -4,16 +4,16 @@
 
 
 // get tasks from database
-// const loadTasks = (onlyLoadlatest = false) => {
-//   $.ajax('/tasks/api', { method: 'GET' })
-//     .then((data) => {
+const loadTasks = (onlyLoadlatest = false) => {
+  $.ajax('/tasks/api', { method: 'GET' })
+    .then((data) => {
 
-//       if (onlyLoadLatest) {
-//         renderTasks()
-//       }
+      if (onlyLoadLatest) {
+        renderTasks()
+      }
 
-//     }
-// }
+    }
+}
 
 // render multiple tasks
 // tasks = [ {task, category_id} ]
@@ -65,10 +65,24 @@ const createTaskElement = (task) => {
 }
 
 //  TEST
-const data = [{
-  task: 'Harry Potter',
-  category_id: 1
-}];
+const data = [
+  {
+    task: 'Harry Potter',
+    category_id: 1
+  },
+  {
+    task: 'How Google Works',
+    category_id: 2
+  },
+  {
+    task: 'Osmow\'s',
+    category_id: 3
+  },
+  {
+    task: 'Pencil',
+    category_id: 4
+  }
+];
 
 const test = renderTasks(data);
 console.log(test);
