@@ -14,7 +14,6 @@ module.exports = () => {
       user: user,
       task: task
     }
-    console.log(user);
     res.render('../views/tasks', templateVars);
   })
 
@@ -23,12 +22,9 @@ module.exports = () => {
       task: req.body.task,
       user_id: req.session.user_id
     }
-    //check duplicate task
+    //STRETCH check duplicate task
     const newTask = await categorizeTask(input);
-    console.log('newTask', newTask);
     res.json(newTask);
-    // loadTasks(true);
-
   })
 
   // get tasks from database in json format
