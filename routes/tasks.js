@@ -14,6 +14,7 @@ module.exports = () => {
       user: user,
       task: task
     }
+    console.log(user);
     res.render('../views/tasks', templateVars);
   })
 

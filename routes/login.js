@@ -11,8 +11,10 @@ module.exports = () => {
       res.redirect('/tasks');
 
     } else {
-      res.render('../views/login');
-
+      let templateVars = {
+        user: {id: undefined, name: null}
+      };
+      res.render('../views/login', templateVars);
     }
   });
 
