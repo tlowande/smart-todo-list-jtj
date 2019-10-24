@@ -66,9 +66,20 @@
           background-color: #d8d8d8;
           text-align: center;
           border: none;
+
+          .fa-times {
+            position:absolute;
+            right: 10px;
+            visibility:hidden;
+            color:darkgray;
+            padding-top: 5px;
+          }
         }
         .list-group-item:hover {
           background-color:#f6e5bc;
+          .fa-times {
+            visibility: visible;
+          }
         }
       }
 
