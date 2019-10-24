@@ -18,7 +18,8 @@ module.exports = (db) => {
     `;
     try {
       const res = await db.query(queryString, queryParams);
-      return res.rows[0];
+      console.log('updated');
+      // return res.rows[0];
     } catch (err) {
       console.error('query error', err.stack);
     }

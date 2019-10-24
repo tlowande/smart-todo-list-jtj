@@ -31,7 +31,6 @@ const getUserByEmail = async (email) => {
     return res.rows[0] || null;
 
   } catch (err) {
-    console.log("Aqui");
     console.error('query error', err.stack);
   }
 
@@ -72,8 +71,6 @@ const getTaskById = async (id) => {
 
 const addUser = async (obj) => {
   const { name, email, password } = obj;
-  console.log('THISSSSSSSS is user OBJ', obj);
-
   const queryString = `
   INSERT INTO users (name, email, password)
   VALUES ($1, $2, $3)
@@ -83,7 +80,6 @@ const addUser = async (obj) => {
 
   try {
     const res = await db.query(queryString, queryParams);
-    // console.log('REEEEEEEEEEEEEEEEEEEEEES',res.rows[0]);
     return res.rows[0];
 
   } catch (err) {
