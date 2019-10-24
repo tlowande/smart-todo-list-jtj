@@ -30,12 +30,11 @@ $(() => {
   const $input = $('input');
   const $button = $('.add-task');
 
+  // -dialog modal-dialog-centered
   // user submits form
   $submitForm.submit((event) => {
     // prevent page refresh
     event.preventDefault();
-
-    console.log('SUBMIT EVENT');
 
     $.ajax('/tasks', {
       method: 'POST',
@@ -43,10 +42,20 @@ $(() => {
       data: $('#submit-form').serialize()
     })
     .then((data) => {
-      console.log('return from server', data);
+      console.log('return from server:', data);
 
       if (!data) {
-        $('#myModal').modal();
+        alert('Duplicate task. Please try another.')
+
+        // $('#my-modal').modal('show');
+
+
+        // $('#my-modal').on('show.bs.modal', function (event) {
+        //   const modal = $(this);
+        //   modal.find('.modal-body p').text('Duplicate task. Please try another.')
+
+        // })
+
       } else {
         loadTasks(true);
       }

@@ -129,7 +129,7 @@ const categorizeTask =  async (obj) => {
   for (t of tasks) {
     if (t.input.toLowerCase() === task.toLowerCase()) {
       console.log('DUPLICATE TASK:', t.input);
-      return;
+      return null;
 
     }
   }
