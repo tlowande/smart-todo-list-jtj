@@ -8,17 +8,18 @@ module.exports = (db) => {
     // get new task category and pass to tasks table in database
     const { input, category_id } = req.body;
     const user_id = req.session.user_id;
-
     const queryParams = [ category_id, user_id, input ];
     const queryString = `
-      UPDATE tasks
-      SET category_id = $1
-      WHERE user_id = $2 AND input = $3
-      RETURNING *;
+    UPDATE tasks
+    SET category_id = $1
+    WHERE user_id = $2 AND input = $3
+    RETURNING *;
     `;
     try {
-      const res = await db.query(queryString, queryParams);
-      // return res.rows[0];
+      console.log(req.body)
+     await db.query(queryString, queryParams);
+      res.send()
+      console.log(req.session.user_id)
     } catch (err) {
       console.error('query error', err.stack);
     }

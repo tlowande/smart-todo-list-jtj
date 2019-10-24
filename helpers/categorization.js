@@ -82,6 +82,7 @@ const getSearchResults = (queryString) => {
  */
 const combineResults = (arr) => {
   let str = '';
+  console.log(arr)
   for (let obj of arr) {
     str += str.concat(' ', obj.title.concat(' ', obj.snippet));
   }
@@ -147,7 +148,6 @@ const categorizeTask =  async (obj) => {
         return getCategory(res);
       })
       .then(res => {
-        console.log('After API:', res);
         input.category_id = res;
         const newTask = addTask(input);
         return newTask;
