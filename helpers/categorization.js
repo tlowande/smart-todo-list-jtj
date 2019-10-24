@@ -134,7 +134,7 @@ const categorizeTask =  async (obj) => {
         return getCategory(res);
       })
       .then(res => {
-        console.log('After API:', res);
+        console.log('After API:');
         input.category_id = res;
         const newTask = addTask(input);
         return newTask;

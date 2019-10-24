@@ -1,19 +1,35 @@
 $(() => {
+
+  // const currentCat = $('.list-group-item').on('click', function (e) {
+  //   $(e.target)
+  //     .parent()
+  //     .parent()
+  //     .data('category_id');
+  //   });
+
+  let task;
+  $('.list-group').on('mousedown', function (event) {
+    task = $(event.target).text();
+  });
+
   //updates database when task is dragged and dropped
-  $('.list-group').on('drop', function (event) {
-    const task = $(event.target).text();
+  $('.list-group').on('drop', async function (event) {
     const category = $(event.target)
-      .parent()
       .parent()
       .attr('data-category_id');
 
-    $.ajax('/update', {
-      method: 'POST',
-      data: {
-        input: task,
-        category_id: category
-      }
-    })
+    try {
+      console.log('about to update');
+      await $.ajax('/update', {
+        method: 'POST',
+        data: {
+          input: task,
+          category_id: category
+        }
+      })
+    } catch (err) {
+      console.error(err);
+    }
   })
 
   /* TASK SUBMISSION */
@@ -31,16 +47,16 @@ $(() => {
       contentType: 'application/x-www-form-urlencoded',
       data: $('#submit-form').serialize()
     })
-    .then(() => {
-      loadTasks(true);
-    })
+      .then(() => {
+        loadTasks(true);
+      })
 
     // clear input area
     $input.val('');
   })
 
   // button click to open input box
-  $button.on('click', function(event) {
+  $button.on('click', function (event) {
     // do not refresh if the input area is empty
     if ($input.val().length === 0) {
       event.preventDefault();
@@ -51,12 +67,12 @@ $(() => {
   });
 
   // cursor focus switches to input box (i.e. open input box)
-  $input.on('focus', function() {
+  $input.on('focus', function () {
     $submitForm.addClass('focus');
   });
 
   // listen blur event (loses focus)
-  $input.on('blur', function() {
+  $input.on('blur', function () {
     $input.val().length !== 0
       ? $submitForm.addClass('focus')
       : $submitForm.removeClass('focus');

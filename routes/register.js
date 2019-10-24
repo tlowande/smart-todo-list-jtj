@@ -18,8 +18,6 @@ module.exports = () => {
     } else {
       const addingUser = await addUser(input);
 
-
-      console.log('REGISTER SUCCESS');
       req.session = { user_id: addingUser.id };
       res.redirect('/tasks');
     }

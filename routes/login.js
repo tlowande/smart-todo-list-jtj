@@ -20,7 +20,6 @@ module.exports = () => {
 
   // logging in
   router.post('/', async (req, res) => {
-    console.log('Hitting the login', req.body);
     // query the database for the email input by user
     getUserByEmail(req.body.email)
       .then(user => {
@@ -33,9 +32,7 @@ module.exports = () => {
             res.json({error: 'Password does not match'});
 
           } else {
-            console.log('LOGIN SUCCESS');
             req.session = { user_id: user.id };
-            console.log(req.session);
             res.redirect('/tasks');
 
           }
