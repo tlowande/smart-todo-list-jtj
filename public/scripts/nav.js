@@ -4,6 +4,7 @@ $( document ).ready(function () {
 
   $logout.on('click', e => {
     e.target.parentNode.submit();
+
   })
 
   if ($userIcon.data('id')) {

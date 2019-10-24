@@ -13,20 +13,23 @@ $(() => {
   });
 
   //updates database when task is dragged and dropped
-  $('.list-group').on('drop', async function (event) {
+  $('.list-group').on('drop', function (event) {
     const category = $(event.target)
       .parent()
       .attr('data-category_id');
 
     try {
-      console.log('about to update');
-      await $.ajax('/update', {
+      $.ajax('/update', {
         method: 'POST',
         data: {
           input: task,
           category_id: category
         }
       })
+      .done((data) => {
+        console.log(data);
+      })
+
     } catch (err) {
       console.error(err);
     }
