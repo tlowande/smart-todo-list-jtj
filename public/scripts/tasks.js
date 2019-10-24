@@ -1,52 +1,72 @@
 $(() => {
+  //updates database when task is dragged and dropped
+  $('.list-group').on('drop', function (event) {
+    const task = $(event.target).text();
+    const category = $(event.target)
+      .parent()
+      .parent()
+      .attr('data-category_id');
 
-  const taskForm = $('.task-form');
-  const submit = $('input');
-  const button = $('.add-task');
+    $.ajax('/update', {
+      method: 'POST',
+      data: {
+        input: task,
+        category_id: category
+      }
+    })
+  })
 
-  taskForm.submit((event) => {
+  /* TASK SUBMISSION */
+  const $submitForm = $('#submit-form');
+  const $input = $('input');
+  const $button = $('.add-task');
+
+  // user submits form
+  $submitForm.submit((event) => {
+    // prevent page refresh
     event.preventDefault();
-    console.log('Sending...', $('#submit-task').serialize());
 
     $.ajax('/tasks', {
       method: 'POST',
       contentType: 'application/x-www-form-urlencoded',
-      data: $('#submit-task').serialize()
-     })
-      .then((res) => {
-        console.log('Getting back...', res);
-        loadTasks(true);
-      })
+      data: $('#submit-form').serialize()
+    })
+    .then(() => {
+      loadTasks(true);
+    })
 
+    // clear input area
+    $input.val('');
   })
 
-  // listen for button click
-  button.on('click', function(event) {
-    // if the input area is empty, prevent user from sending post request
-    if (submit.val.length === 0) {
+  // button click to open input box
+  $button.on('click', function(event) {
+    // do not refresh if the input area is empty
+    if ($input.val().length === 0) {
       event.preventDefault();
     }
-    submit.focus();
-    taskForm.toggleClass('active');
+    $input.focus();
+    $submitForm.toggleClass('active');
 
   });
-  // listen for submit coming into focus
-  submit.on('focus', function() {
-    taskForm.addClass('focus');
+
+  // cursor focus switches to input box (i.e. open input box)
+  $input.on('focus', function() {
+    $submitForm.addClass('focus');
   });
+
   // listen blur event (loses focus)
-  submit.on('blur', function() {
-    submit.val.length !== 0
-      ? taskForm.addClass('focus')
-      : taskForm.removeClass('focus');
+  $input.on('blur', function() {
+    $input.val().length !== 0
+      ? $submitForm.addClass('focus')
+      : $submitForm.removeClass('focus');
   });
 
-  /* loadTasks function */
+  /* LOAD TASKS */
   // get tasks from database
   const loadTasks = (onlyLoadLatest = false) => {
     $.ajax('/tasks/api', { method: 'GET' })
       .then((data) => {
-        // console.log('DATA', data);
 
         if (onlyLoadLatest) {
           renderTasks([data[data.length - 1]]);
@@ -73,7 +93,6 @@ $(() => {
 
     // wrap each task in html and add to corresponding array
     for (task of tasks) {
-      console.log('task', task);
       // check which category container to append the task to
       switch (task.category_id) {
         case 1:
@@ -89,13 +108,10 @@ $(() => {
           renderedTasks_products.unshift(createTaskElement(task.input));
       }
     }
-
     $taskContainer_movies.prepend(renderedTasks_movies.join(''));
     $taskContainer_books.prepend(renderedTasks_books.join(''));
     $taskContainer_restaurants.prepend(renderedTasks_restaurants.join(''));
     $taskContainer_products.prepend(renderedTasks_products.join(''));
-
-    console.log('$taskContainer_movies', $taskContainer_movies[0]);
   };
 
   // genereate markup for a single task
