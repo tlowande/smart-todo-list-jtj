@@ -68,9 +68,16 @@ const getSearchResults = (queryString) => {
       num: 3
     });
     try {
-      resolve(result.organic_results);
+      if (!result.organic_results) {
+        resolve(result.local_results);
+
+      } else {
+        resolve(result.organic_results);
+      }
+
     } catch (err) {
       reject(err.message);
+
     }
   });
 }
@@ -123,6 +130,7 @@ const categorizeTask =  async (obj) => {
     if (t.input.toLowerCase() === task.toLowerCase()) {
       console.log('DUPLICATE TASK:', t.input);
       return;
+
     }
   }
 
@@ -142,18 +150,22 @@ const categorizeTask =  async (obj) => {
     return getSearchResults(task)
       .then(res => {
         return combineResults(res);
+
       })
       .then(res => {
         return getCategory(res);
+
       })
       .then(res => {
         console.log('After API:', res);
         input.category_id = res;
         const newTask = addTask(input);
         return newTask;
+
       })
       .catch(err => {
         console.error('query error', err.stack);
+
       });
   }
 }

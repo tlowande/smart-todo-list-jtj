@@ -1,12 +1,5 @@
 $(() => {
-
-  // const currentCat = $('.list-group-item').on('click', function (e) {
-  //   $(e.target)
-  //     .parent()
-  //     .parent()
-  //     .data('category_id');
-  //   });
-
+  /* HANDLE DRAG AND DROP (MANUAL CATEGORIZATION) */
   let task;
   $('.list-group').on('mousedown', function (event) {
     task = $(event.target).text();
@@ -42,14 +35,22 @@ $(() => {
     // prevent page refresh
     event.preventDefault();
 
+    console.log('SUBMIT EVENT');
+
     $.ajax('/tasks', {
       method: 'POST',
       contentType: 'application/x-www-form-urlencoded',
       data: $('#submit-form').serialize()
     })
-      .then(() => {
+    .then((data) => {
+      console.log('return from server', data);
+
+      if (!data) {
+        $('#myModal').modal();
+      } else {
         loadTasks(true);
-      })
+      }
+    })
 
     // clear input area
     $input.val('');
