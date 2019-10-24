@@ -31,7 +31,11 @@ const checkAllEmails = async function () {
   `;
   try {
     const res = await db.query(queryString);
-    return res.rows[0];
+    const emails = []
+    for (let each of res.rows){
+      emails.push(each.email)
+    }
+    return emails;
 
   } catch (err) {
     console.error('query error', err.stack);

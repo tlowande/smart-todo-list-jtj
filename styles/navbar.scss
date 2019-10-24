@@ -37,7 +37,7 @@ nav {
     padding-top: 15px;
 
     a {
-      color: #5c5a5a;
+      color:black;
       position: relative;
     }
 
@@ -51,7 +51,8 @@ nav {
       transform: scaleX(-1) rotate(10deg);
       font-size: 4rem;
       margin-top: -20px;
-      // visibility: hidden;
+      visibility: hidden;
+      content: "\f150";
     }
 
     #edit {
