@@ -6,8 +6,6 @@ const bcrypt = require('bcrypt');
 const addTask = async function (obj) {
   const { task, user_id, category_id } = obj;
 
-  console.log('INSERTING TO DATABASE:', task);
-
   const queryString = `
   INSERT INTO tasks (input, user_id, category_id)
   VALUES ($1, $2, $3)
@@ -18,6 +16,21 @@ const addTask = async function (obj) {
 
   try {
     const res = await db.query(queryString, values);
+    return res.rows[0];
+
+  } catch (err) {
+    console.error('query error', err.stack);
+
+  }
+}
+
+const checkAllEmails = async function () {
+  const queryString = `
+  SELECT email
+  FROM users;
+  `;
+  try {
+    const res = await db.query(queryString);
     return res.rows[0];
 
   } catch (err) {
@@ -104,6 +117,7 @@ const addUser = async (obj) => {
 
 module.exports = {
   addTask,
+  checkAllEmails,
   getUserByEmail,
   getUserById,
   getTaskById,
