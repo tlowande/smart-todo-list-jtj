@@ -54,7 +54,7 @@
 <body class="body">
   <!-- alert user -->
   <div id="my-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Oops!</h5>
@@ -84,6 +84,7 @@
           <div>Movies</div>
         </header>
         <ul class="list-group" id="demo1" data-category_id="1">
+            <li class='list-group-item'>test<i class="fas fa-times"></i></li>
         </ul>
       </article>
       <article id="books" data-category_id="2">
@@ -119,7 +120,7 @@
   <!-- MODAL -->
   <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <form class="modal-content" method="POST" action="/update_profile">
         <div class="modal-header text-center">
           <h4 class="modal-title w-100 font-weight-bold">Profile Update</h4>

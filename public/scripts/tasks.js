@@ -141,7 +141,7 @@ $(() => {
   // task = task (string)
   const createTaskElement = (task) => {
     const markup = `
-      <li class='list-group-item'>${task}</li>
+      <li class='list-group-item'>${task}<i class="fas fa-times"></i></li>
     `;
     return markup;
   };
