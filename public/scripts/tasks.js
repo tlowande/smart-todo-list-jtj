@@ -7,34 +7,32 @@ $(() => {
   //     .data('category_id');
   //   });
 
-  $('.list-group').on('mousedown', function (event3) {
-    event3.stopPropagation();
-    const task2 = $(event3.target).text();
-    console.log('before', task2);
+    $('li').on('click', function (event) {
+      console.log('this')
+      const task2 = $(event.target).text();
+      console.log(task2);
+    })
     //updates database when task is dragged and dropped
     $('.list-group').on('drop', async function (event) {
-      event.stopPropagation();
-      const task = $(event.target).text();
-      console.log('after', task2);
-      const category = $(event.target)
-        .parent()
-        .attr('data-category_id');
-      // console.log('current Cat: ', currentCat);
-      console.log('target Cat: ', category);
+    const task = $(event.target).text();
+    const category = $(event.target)
+    .parent()
+    .attr('data-category_id');
+    // console.log('current Cat: ', currentCat);
+    console.log('target Cat: ', category);
 
-      try {
-        console.log('about to update');
-        await $.ajax('/update', {
-          method: 'POST',
-          data: {
-            input: task,
-            category_id: category
-          }
-        })
-      } catch (err) {
-        console.error(err);
-      }
-    })
+    try {
+      console.log('about to update');
+      await $.ajax('/update', {
+        method: 'POST',
+        data: {
+          input: task,
+          category_id: category
+        }
+      })
+    } catch (err) {
+      console.error(err);
+    }
   })
 
   /* TASK SUBMISSION */
@@ -52,16 +50,16 @@ $(() => {
       contentType: 'application/x-www-form-urlencoded',
       data: $('#submit-form').serialize()
     })
-      .then(() => {
-        loadTasks(true);
-      })
+    .then(() => {
+      loadTasks(true);
+    })
 
     // clear input area
     $input.val('');
   })
 
   // button click to open input box
-  $button.on('click', function (event) {
+  $button.on('click', function(event) {
     // do not refresh if the input area is empty
     if ($input.val().length === 0) {
       event.preventDefault();
@@ -72,12 +70,12 @@ $(() => {
   });
 
   // cursor focus switches to input box (i.e. open input box)
-  $input.on('focus', function () {
+  $input.on('focus', function() {
     $submitForm.addClass('focus');
   });
 
   // listen blur event (loses focus)
-  $input.on('blur', function () {
+  $input.on('blur', function() {
     $input.val().length !== 0
       ? $submitForm.addClass('focus')
       : $submitForm.removeClass('focus');
