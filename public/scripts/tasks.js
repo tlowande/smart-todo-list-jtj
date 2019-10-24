@@ -1,32 +1,28 @@
 $(() => {
-
-  // const currentCat = $('.list-group-item').on('click', function (e) {
-  //   $(e.target)
-  //     .parent()
-  //     .parent()
-  //     .data('category_id');
-  //   });
-
+  /* HANDLE DRAG AND DROP (MANUAL CATEGORIZATION) */
   let task;
   $('.list-group').on('mousedown', function (event) {
     task = $(event.target).text();
   });
 
   //updates database when task is dragged and dropped
-  $('.list-group').on('drop', async function (event) {
+  $('.list-group').on('drop', function (event) {
     const category = $(event.target)
       .parent()
       .attr('data-category_id');
 
     try {
-      console.log('about to update');
-      await $.ajax('/update', {
+      $.ajax('/update', {
         method: 'POST',
         data: {
           input: task,
           category_id: category
         }
       })
+      .done((data) => {
+        console.log(data);
+      })
+
     } catch (err) {
       console.error(err);
     }
@@ -37,6 +33,7 @@ $(() => {
   const $input = $('input');
   const $button = $('.add-task');
 
+  // -dialog modal-dialog-centered
   // user submits form
   $submitForm.submit((event) => {
     // prevent page refresh
@@ -47,9 +44,19 @@ $(() => {
       contentType: 'application/x-www-form-urlencoded',
       data: $('#submit-form').serialize()
     })
-      .then(() => {
+    .then((data) => {
+      console.log('return from server:', data.msg);
+
+      if (data.msg) {
+        // populate modal with error msg
+        $('.modal-body p').text(data.msg);
+        // show modal
+        $('#my-modal').modal('show');
+
+      } else {
         loadTasks(true);
-      })
+      }
+    })
 
     // clear input area
     $input.val('');

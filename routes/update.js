@@ -16,10 +16,9 @@ module.exports = (db) => {
     RETURNING *;
     `;
     try {
-      console.log(req.body)
-     await db.query(queryString, queryParams);
-      res.send()
-      console.log(req.session.user_id)
+      const result = await db.query(queryString, queryParams);
+      res.json(result.rows[0]);
+
     } catch (err) {
       console.error('query error', err.stack);
     }

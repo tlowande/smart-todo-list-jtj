@@ -68,9 +68,16 @@ const getSearchResults = (queryString) => {
       num: 3
     });
     try {
-      resolve(result.organic_results);
+      if (!result.organic_results) {
+        resolve(result.local_results);
+
+      } else {
+        resolve(result.organic_results);
+      }
+
     } catch (err) {
       reject(err.message);
+
     }
   });
 }
@@ -122,8 +129,8 @@ const categorizeTask =  async (obj) => {
   const tasks = await getTaskById(user_id);
   for (t of tasks) {
     if (t.input.toLowerCase() === task.toLowerCase()) {
-      console.log('DUPLICATE TASK:', t.input);
-      return;
+      return { msg : 'Duplicate task. Please try another.'};
+
     }
   }
 
@@ -143,17 +150,21 @@ const categorizeTask =  async (obj) => {
     return getSearchResults(task)
       .then(res => {
         return combineResults(res);
+
       })
       .then(res => {
         return getCategory(res);
+
       })
       .then(res => {
         input.category_id = res;
         const newTask = addTask(input);
         return newTask;
+
       })
       .catch(err => {
         console.error('query error', err.stack);
+
       });
   }
 }
