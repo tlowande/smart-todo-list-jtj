@@ -8,12 +8,9 @@ $( document ).ready(function () {
 
   if ($userIcon.data('id')) {
     $userIcon.css('display','flex');
-    console.log('this is id', id);
   } else {
     $userIcon.css('display','none');
   }
-
-  $(target).click()
 
 });
 
