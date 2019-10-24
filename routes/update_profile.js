@@ -1,17 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { getUserById } = require('../helpers/database');
+const { getUserById, checkAllEmails } = require('../helpers/database');
 
 // Updates user input on the database
 module.exports = (db) => {
   router.post('/', async (req, res) => {
 
-
     const user = await getUserById(req.session.user_id)
+    const emails = await checkAllEmails();
 
     if (!bcrypt.compareSync(req.body.password, user.password)) {
       res.json({ error: 'Password does not match' });
+    } else if (emails.includes(req.body.email)) {
+      res.json({ error: 'Email already exists' });
     } else {
       let queryParams = [req.body.name, req.body.email];
       let queryString = `UPDATE users
