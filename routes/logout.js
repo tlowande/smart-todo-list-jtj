@@ -7,6 +7,7 @@ module.exports = () => {
     req.session = null;
     // redirect to login page
     res.redirect('/login');
+
   });
 
   return router;
