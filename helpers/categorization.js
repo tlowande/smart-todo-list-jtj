@@ -128,8 +128,7 @@ const categorizeTask =  async (obj) => {
   const tasks = await getTaskById(user_id);
   for (t of tasks) {
     if (t.input.toLowerCase() === task.toLowerCase()) {
-      console.log('DUPLICATE TASK:', t.input);
-      return null;
+      return { msg : 'Duplicate task. Please try another.'};
 
     }
   }

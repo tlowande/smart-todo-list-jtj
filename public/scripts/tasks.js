@@ -42,19 +42,13 @@ $(() => {
       data: $('#submit-form').serialize()
     })
     .then((data) => {
-      console.log('return from server:', data);
+      console.log('return from server:', data.msg);
 
-      if (!data) {
-        alert('Duplicate task. Please try another.')
-
-        // $('#my-modal').modal('show');
-
-
-        // $('#my-modal').on('show.bs.modal', function (event) {
-        //   const modal = $(this);
-        //   modal.find('.modal-body p').text('Duplicate task. Please try another.')
-
-        // })
+      if (data.msg) {
+        // populate modal with error msg
+        $('.modal-body p').text(data.msg);
+        // show modal
+        $('#my-modal').modal('show');
 
       } else {
         loadTasks(true);
