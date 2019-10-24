@@ -68,7 +68,6 @@ const getSearchResults = (queryString) => {
       num: 3
     });
     try {
-      console.log(result.organic_results);
       resolve(result.organic_results);
     } catch (err) {
       reject(err.message);
