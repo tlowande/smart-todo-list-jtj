@@ -64,9 +64,11 @@ const getSearchResults = (queryString) => {
       gl: 'ca',
       hl: 'en',
       location: 'Toronto,Ontario,Canada',
-      google_domain: 'google.ca'
+      google_domain: 'google.ca',
+      num: 3
     });
     try {
+      console.log(result.organic_results);
       resolve(result.organic_results);
     } catch (err) {
       reject(err.message);
