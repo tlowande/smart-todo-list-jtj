@@ -35,5 +35,12 @@ module.exports = (db) => {
       }
     }
   })
+
+  router.get('/', async (req, res) => {
+    const user_id = req.session.user_id;
+    console.log('userId', user_id);
+    res.json(await getUserById(user_id));
+  })
+
   return router;
 }
