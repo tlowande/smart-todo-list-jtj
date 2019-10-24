@@ -1,4 +1,4 @@
-const { addTask } = require('./database');
+const { addTask, getTaskById } = require('./database');
 const SerpWow = require('google-search-results-serpwow');
 // create the serpwow object
 const serpwow = new SerpWow('33E652E1BD9141DCA475F2215D145731');
@@ -115,12 +115,24 @@ const getCategory = function (string) {
  */
 const categorizeTask =  async (obj) => {
   const { task, user_id } = obj;
+
+  // check if task already exists for that user
+  const tasks = await getTaskById(user_id);
+  for (t of tasks) {
+    if (t.input === task) {
+      console.log('DUPLICATE TASK:', t.input);
+      return;
+    }
+  }
+
   const res = categorizeByVerb(task);
+
   const input = {
     task: task,
     user_id: user_id,
     category_id: res
   }
+
   if (res) {
     const newTask = await addTask(input);
     return newTask;
@@ -134,7 +146,7 @@ const categorizeTask =  async (obj) => {
         return getCategory(res);
       })
       .then(res => {
-        console.log('After API:');
+        console.log('After API:', res);
         input.category_id = res;
         const newTask = addTask(input);
         return newTask;
@@ -146,8 +158,4 @@ const categorizeTask =  async (obj) => {
 }
 
 module.exports = { categorizeTask };
-
-// userInput = 'deadpool';
-// user = 2;
-// categorizeTask(userInput);
 

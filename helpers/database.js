@@ -6,21 +6,14 @@ const bcrypt = require('bcrypt');
 const addTask = async function (obj) {
   const { task, user_id, category_id } = obj;
 
-  // check if task already exists for that user
-  const tasks = await getTaskById(user_id);
-  for (t of tasks) {
-    if (t.input === task) {
-      console.log('DUPLICATE TASK', t.input);
-      return;
-    }
-  }
+  console.log('INSERTING TO DATABASE:', task);
 
-  console.log('INSERTING TO DATABASE', task);
   const queryString = `
   INSERT INTO tasks (input, user_id, category_id)
   VALUES ($1, $2, $3)
   RETURNING *;
   `;
+
   const values = [task, user_id, category_id];
 
   try {
