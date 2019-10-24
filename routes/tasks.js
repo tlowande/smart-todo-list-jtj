@@ -7,11 +7,6 @@ module.exports = () => {
   // load tasks page
   router.get('/', async (req, res) => {
 
-    // TEMPORARY - check if user is logged in
-    if (!req.session.user_id) {
-      res.redirect('/login');
-    }
-
     const user = await getUserById(req.session.user_id);
     const task = await getTaskById(req.session.user_id);
     //returns an array of objects

@@ -1,4 +1,20 @@
 $(() => {
+  //updates database when task is dragged and dropped
+  $('.list-group').on('drop', function (event) {
+    const task = $(event.target).text();
+    const category = $(event.target)
+      .parent()
+      .parent()
+      .attr('data-category_id');
+
+    $.ajax('/update', {
+      method: 'POST',
+      data: {
+        input: task,
+        category_id: category
+      }
+    })
+  })
 
   /* TASK SUBMISSION */
   const $submitForm = $('#submit-form');
