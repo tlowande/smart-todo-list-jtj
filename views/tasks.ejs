@@ -130,22 +130,22 @@
         <div class="modal-body mx-3">
           <div class="md-form mb-5">
             <i class="fas fa-user prefix black-text"></i>
-            <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Your name" value="<%=user.name%>" required>
+            <input name="name" type="text" id="orangeForm-name" class="form-control validate" placeholder="Your name" value="<%=user.name%>" required>
             <label data-error="wrong" data-success="right" for="orangeForm-name"></label>
           </div>
           <div class="md-form mb-5">
             <i class="fas fa-envelope prefix black-text"></i>
-            <input type="email" id="orangeForm-email" class="form-control validate" placeholder="Your email" value="<%=user.email%>"  required>
+            <input name="email" type="email" id="orangeForm-email" class="form-control validate" placeholder="Your email" value="<%=user.email%>"  required>
             <label data-error="wrong" data-success="right" for="orangeForm-email"></label>
           </div>
           <div class="md-form mb-5">
             <i class="fas fa-lock prefix grey-text"></i>
-            <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="Verify password" required>
+            <input name="password" type="password" id="orangeForm-pass" class="form-control validate" placeholder="Verify password" required>
             <label data-error="wrong" data-success="right" for="orangeForm-pass" ></label>
           </div>
           <div class="md-form mb-4">
             <i class="fas fa-lock prefix grey-text"></i>
-            <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="New password (optional)">
+            <input name="new_password" type="password" id="orangeForm-pass" class="form-control validate" placeholder="New password (optional)">
             <label data-error="wrong" data-success="right" for="orangeForm-pass" ></label>
           </div>
         </div>
