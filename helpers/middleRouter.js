@@ -4,7 +4,7 @@ const isLogged = userId => {
 }
 
 const isUserLogged = (req, res, next) => {
-  if (req.path === '/login') {
+  if (req.path === '/login' || req.path === '/register') {
     next();
   } else if (!isLogged(req.session.user_id)) {
     res.redirect('/login');
