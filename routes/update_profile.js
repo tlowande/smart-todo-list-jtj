@@ -18,7 +18,8 @@ module.exports = (db) => {
           SET name = $1, email = $2`
 
       if (req.body.new_password) {
-        queryParams.push(req.body.new_password);
+        let password = bcrypt.hashSync(req.body.new_password, 10)
+        queryParams.push(password);
         queryString += ` , password = $${queryParams.length}`
       }
 
