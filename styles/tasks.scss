@@ -9,7 +9,7 @@ body {
 .task-form {
   position: relative;
   margin: 50px auto 0;
-  width: 325px;
+  width: 600px;
 }
 .task-form:before {
   content: ' ';
@@ -78,7 +78,7 @@ input {
   transition: all 0.8s ease;
 }
 .active .add-task {
-  transform: translateX(260px);
+  transform: translateX(540px);
 }
 .active .add-task:before {
   transform: scale(1);

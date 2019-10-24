@@ -34,11 +34,33 @@ nav {
     align-items: center;
     font-family: 'Baloo Tamma', cursive;
     padding-right: 3rem;
+    padding-top: 15px;
 
     .fas {
       font-size: 5rem;
       padding-bottom: 0.5rem;
     }
+
+    .fa-comment {
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1) rotate(10deg);
+      font-size: 4rem;
+      margin-top: -20px;
+      visibility: hidden;
+    }
+
+    #edit {
+
+      transform: rotate(-10deg);
+      // font-size: 4rem;
+      margin-top: -20px;
+      visibility: hidden;
+    }
+
+    .username-holder {
+      padding-left: 64px;
+    }
+
     .dropdown-content {
       display: none;
       position: absolute;
@@ -58,11 +80,17 @@ nav {
       box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                   inset 2px 2px 3px rgba(0, 0, 0, .6);
     }
+    .dropdown-content:active {
+      box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                  inset 2px 2px 3px rgba(0, 0, 0, .6);
+    }
   }
   .dropdown:hover {
     .dropdown-content {display: block;}
     cursor: pointer;
     .username-holder {visibility: hidden;}
+    .fa-comment { visibility: visible}
+    #edit {visibility: visible }
   }
 
 }
