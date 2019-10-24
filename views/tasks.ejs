@@ -1,39 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Smart TO-DO List</title>
+  <head>
+    <title>Smart TO-DO List</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-  <!--Css style-->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" /> -->
-  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/tasks.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/tasks2.css" type="text/css" />
+    <!--Css style-->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tasks.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tasks2.css" type="text/css" />
 
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-
-  <!--Bootstrap-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <script src="https://cdn.jsdelivr.net/gh/RubaXa/Sortable/Sortable.min.js"></script>
-
-  <!--Font Families-->
-  <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma|Permanent+Marker&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-
-  <!-- External Font Awesome icons -->
-  <script src="https://kit.fontawesome.com/7b217e7c39.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap drag and drop -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/gh/RubaXa/Sortable/Sortable.min.js"></script>
 
 
-</head>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet"> -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script> -->
+
+
+
+    <!--Font Families-->
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma|Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+  </head>
 <% include ./partials/nav-bar %>
 
 <body class="body">
-
+  <!-- alert user -->
+  <div id="my-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Oops!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- submit task area -->
   <div class='task-form'>
     <!-- <form method='POST' action='/tasks'> -->
     <form id='submit-form'>

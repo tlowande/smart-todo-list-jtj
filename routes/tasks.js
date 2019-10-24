@@ -22,10 +22,12 @@ module.exports = () => {
       task: req.body.task,
       user_id: req.session.user_id
     }
+    // categorize new task
     const newTask = await categorizeTask(input);
+    console.log('After categorization:', newTask);
+
     res.json(newTask);
 
-    //STRETCH check duplicate task
   })
 
   // get tasks from database in json format
