@@ -23,6 +23,7 @@ module.exports = () => {
       user_id: req.session.user_id
     }
     // categorize new task
+    console.log('req.body', req.body)
     const newTask = await categorizeTask(input);
     console.log('After categorization:', newTask);
 

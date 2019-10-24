@@ -59,6 +59,7 @@ const categorizeByVerb = function (task) {
  */
 const getSearchResults = (queryString) => {
   return new Promise(async (resolve, reject) => {
+    console.log(queryString);
     let result = await serpwow.json({
       q: queryString,
       gl: 'ca',
