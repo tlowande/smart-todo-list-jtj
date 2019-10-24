@@ -12,8 +12,10 @@
   flex-direction: column;
   align-items: center;
 
+
   #my-lists {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
     margin: 50px auto;
@@ -36,6 +38,7 @@
         font-family: 'Baloo Tamma', cursive;
         font-size: 1.2rem;
         background-color: #7e7d7d;
+        color:#c3c3c3;
 
 
         div {
@@ -60,7 +63,7 @@
         border-bottom-right-radius: 12px;
 
         .list-group-item {
-          background-color: #d4d4d4d5;
+          background-color: #d8d8d8;
           text-align: center;
           border: none;
         }
@@ -71,16 +74,20 @@
 
     }
     #movies {
+      order: 1;
       background-color: #d4d4d4d5;
     }
     #books {
       background-color: #d4d4d4d5;
+      order: 2;
     }
     #restaurants {
       background-color: #d4d4d4d5;
+      order: 3;
     }
     #products {
       background-color: #d4d4d4d5;
+      order: 4;
     }
   }
 }
