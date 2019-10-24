@@ -1,7 +1,7 @@
 const { addTask } = require('./database');
 const SerpWow = require('google-search-results-serpwow');
 // create the serpwow object
-const serpwow = new SerpWow('02726F437EFB47BAABF8368C718AFD64');
+const serpwow = new SerpWow('33E652E1BD9141DCA475F2215D145731');
 
 /**
  * 1 - Pre-defined tags contining the keywords used to categorize the task
