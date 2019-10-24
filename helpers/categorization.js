@@ -119,7 +119,7 @@ const categorizeTask =  async (obj) => {
   // check if task already exists for that user
   const tasks = await getTaskById(user_id);
   for (t of tasks) {
-    if (t.input === task) {
+    if (t.input.toLowerCase() === task.toLowerCase()) {
       console.log('DUPLICATE TASK:', t.input);
       return;
     }
