@@ -53,7 +53,7 @@ $(() => {
       })
 
     // clear input area
-    // $input.val('');
+    $('#addTask').val('');
   })
 
   // button click to open input box
