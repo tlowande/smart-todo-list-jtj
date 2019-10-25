@@ -45,6 +45,7 @@ const tasksRoutes = require('./routes/tasks');
 const registerRoutes = require('./routes/register');
 const updateRoutes = require('./routes/update');
 const updateProfile = require('./routes/update_profile');
+const deleteTask = require('./routes/delete_task');
 
 
 // Mount all resource routes
@@ -55,6 +56,7 @@ app.use('/tasks', tasksRoutes());
 app.use('/register', registerRoutes());
 app.use('/update', updateRoutes(db));
 app.use('/update_profile', updateProfile(db));
+app.use('/delete', deleteTask(db));
 // Note: mount other resources here, using the same pattern above
 
 

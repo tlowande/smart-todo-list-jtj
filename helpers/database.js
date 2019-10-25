@@ -24,10 +24,11 @@ const addTask = async function (obj) {
   }
 }
 
-const checkAllEmails = async function () {
+const checkAllEmails = async function (user_id) {
   const queryString = `
   SELECT email
-  FROM users;
+  FROM users
+  WHERE id != ${user_id};
   `;
   try {
     const res = await db.query(queryString);
