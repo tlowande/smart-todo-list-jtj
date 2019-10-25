@@ -30,7 +30,7 @@ $(() => {
 
   /* TASK SUBMISSION */
   const $submitForm = $('#submit-form');
-  const $input = $('input');
+  const $input = $('#addTask');
   const $button = $('.add-task');
 
   // -dialog modal-dialog-centered
@@ -59,7 +59,7 @@ $(() => {
     })
 
     // clear input area
-    $input.val('');
+    // $input.val('');
   })
 
   // button click to open input box
