@@ -19,10 +19,6 @@ $(() => {
           category_id: category
         }
       })
-        .done((data) => {
-          console.log(data);
-        })
-
     } catch (err) {
       console.error(err);
     }
@@ -45,8 +41,6 @@ $(() => {
       data: $('#submit-form').serialize()
     })
       .then((data) => {
-        console.log('return from server:', data.msg);
-
         if (data.msg) {
           // populate modal with error msg
           $('.modal-body p').text(data.msg);
@@ -152,7 +146,6 @@ $(() => {
     }
 
     $('.fa-times').on('click', function (e) {
-      console.log('delete clicked');
       try {
         let task = $(e.target).parent().text();
         $.ajax('/delete', {
@@ -161,10 +154,9 @@ $(() => {
             input: task
           }
         })
-          .then(() => {
-            // console.log($movie)
-            $(this).parent().remove();
-          })
+        .then(() => {
+          $(this).parent().remove();
+        })
       } catch (err) {
         console.error(err);
       }

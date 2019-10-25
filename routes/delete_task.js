@@ -5,8 +5,7 @@ module.exports = (db) => {
   router.post('/', async (req, res) => {
     const { input } = req.body;
     const user_id = req.session.user_id;
-    const queryParams = [ user_id, input ];
-    console.log(queryParams)
+    const queryParams = [user_id, input];
     const queryString = `
     DELETE FROM tasks
     WHERE user_id = $1 AND input = $2

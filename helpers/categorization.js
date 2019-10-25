@@ -89,7 +89,6 @@ const getSearchResults = (queryString) => {
  */
 const combineResults = (arr) => {
   let str = '';
-  console.log(arr)
   for (let obj of arr) {
     str += str.concat(' ', obj.title.concat(' ', obj.snippet));
   }

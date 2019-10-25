@@ -24,8 +24,6 @@ module.exports = () => {
     }
     // categorize new task
     const newTask = await categorizeTask(input);
-    console.log('After categorization:', newTask);
-
     res.json(newTask);
 
   })
