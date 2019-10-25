@@ -19,10 +19,6 @@ $(() => {
           category_id: category
         }
       })
-      .done((data) => {
-        console.log(data);
-      })
-
     } catch (err) {
       console.error(err);
     }
@@ -44,19 +40,17 @@ $(() => {
       contentType: 'application/x-www-form-urlencoded',
       data: $('#submit-form').serialize()
     })
-    .then((data) => {
-      console.log('return from server:', data.msg);
+      .then((data) => {
+        if (data.msg) {
+          // populate modal with error msg
+          $('.modal-body p').text(data.msg);
+          // show modal
+          $('#my-modal').modal('show');
 
-      if (data.msg) {
-        // populate modal with error msg
-        $('.modal-body p').text(data.msg);
-        // show modal
-        $('#my-modal').modal('show');
-
-      } else {
-        loadTasks(true);
-      }
-    })
+        } else {
+          loadTasks(true);
+        }
+      })
 
     // clear input area
     $input.val('');
@@ -131,10 +125,42 @@ $(() => {
           renderedTasks_products.unshift(createTaskElement(task.input));
       }
     }
-    $taskContainer_movies.prepend(renderedTasks_movies.join(''));
-    $taskContainer_books.prepend(renderedTasks_books.join(''));
-    $taskContainer_restaurants.prepend(renderedTasks_restaurants.join(''));
-    $taskContainer_products.prepend(renderedTasks_products.join(''));
+    for (movie of renderedTasks_movies) {
+      $movie = $(movie);
+      $taskContainer_movies.append($movie);
+    }
+
+    for (book of renderedTasks_books) {
+      $book = $(book);
+      $taskContainer_books.prepend($book);
+    }
+
+    for (restaurant of renderedTasks_restaurants) {
+      $restaurant = $(restaurant);
+      $taskContainer_restaurants.prepend($restaurant);
+    }
+
+    for (product of renderedTasks_products) {
+      $product = $(product);
+      $taskContainer_products.prepend($product);
+    }
+
+    $('.fa-times').on('click', function (e) {
+      try {
+        let task = $(e.target).parent().text();
+        $.ajax('/delete', {
+          method: 'POST',
+          data: {
+            input: task
+          }
+        })
+        .then(() => {
+          $(this).parent().remove();
+        })
+      } catch (err) {
+        console.error(err);
+      }
+    })
   };
 
   // genereate markup for a single task

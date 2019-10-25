@@ -8,7 +8,7 @@ module.exports = (db) => {
   router.post('/', async (req, res) => {
 
     const user = await getUserById(req.session.user_id)
-    const emails = await checkAllEmails();
+    const emails = await checkAllEmails(req.session.user_id);
 
     if (!bcrypt.compareSync(req.body.password, user.password)) {
       res.json({ error: 'Password does not match' });
