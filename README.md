@@ -6,8 +6,9 @@ This repository is the starter code for the project: students had forked and clo
 
 ## Final Product
 
-!["Login Page"]()
-!["User Main Page"](./docs/MobileMainPage.png)
+!["Login Page"](./docs/Login_Page.png)
+!["User Main Page"](./docs/User_Mainpage.png)
+!["Update Profile page"](./docs/Update_Profile.png)
 
 
 
