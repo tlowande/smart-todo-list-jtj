@@ -127,7 +127,7 @@ $(() => {
     }
     for (movie of renderedTasks_movies) {
       $movie = $(movie);
-      $taskContainer_movies.append($movie);
+      $taskContainer_movies.prepend($movie);
     }
 
     for (book of renderedTasks_books) {
