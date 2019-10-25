@@ -1,6 +1,6 @@
 # Smart TO DO List Project
 
-Smart TO DO is an auto-categorize app that let's you save recommendations in Movies, Books, Restaurants and Products.
+Smart TO DO is an auto-categorize app that let's you save recommendations in specific topics as Movies, Books, Restaurants and Products.
 
 This repository is the starter code for the project: students had forked and cloned this repository, then built upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and PSQL back-end skills.
 
