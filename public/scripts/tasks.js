@@ -26,7 +26,7 @@ $(() => {
 
   /* TASK SUBMISSION */
   const $submitForm = $('#submit-form');
-  const $input = $('input');
+  const $input = $('#addTask');
   const $button = $('.add-task');
 
   // -dialog modal-dialog-centered
@@ -53,7 +53,7 @@ $(() => {
       })
 
     // clear input area
-    $input.val('');
+    // $input.val('');
   })
 
   // button click to open input box
@@ -127,7 +127,7 @@ $(() => {
     }
     for (movie of renderedTasks_movies) {
       $movie = $(movie);
-      $taskContainer_movies.append($movie);
+      $taskContainer_movies.prepend($movie);
     }
 
     for (book of renderedTasks_books) {
